@@ -1,0 +1,172 @@
+﻿<html>
+    <head>
+        <style>
+        $white: #FFFFFF;
+        $grey: #AAAAAA;
+        $primary: #75420E;
+        $light: #F2E8E4;
+        $dark: #553B08;
+
+        body {
+            background-color: $light;
+            margin: 2em;
+        }
+
+        header {
+            margin: 5em;
+            img
+
+        {
+            object-fit: contain;
+            width: 17vw;
+            height: auto;
+        }
+
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            img
+
+        {
+            width: 80%;
+        }
+
+        }
+
+        form, p, .social-sign-up {
+            width: 70%;
+        }
+
+        form {
+            h4
+
+        {
+            color: $dark;
+            padding-bottom: 1em;
+        }
+
+        .form-control {
+            background-color: #e5e2e9;
+            opacity: 0.7;
+            margin-bottom: 1.5em;
+        }
+
+        .submit-btn {
+            background-color: $primary;
+            color: $white;
+            width: 100%;
+        }
+
+            .submit-btn:hover {
+                background-color: $light;
+                color: $primary;
+                border: 1px solid $primary;
+            }
+
+        }
+
+        p {
+            color: $grey;
+        }
+
+        .hr-lines {
+            position: relative;
+            max-width: 500px;
+            margin: 50px 0;
+            text-align: center;
+            &:before
+
+        {
+            content: " ";
+            height: 2px;
+            width: 150px;
+            background: $grey;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 0;
+        }
+
+        &:after {
+            content: " ";
+            height: 2px;
+            width: 150px;
+            background: $grey;
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 0;
+        }
+
+        }
+
+        .social-sign-up {
+            button
+
+        {
+            width: 100%;
+            border: 1px solid $dark;
+        }
+
+        button:hover {
+            background: $primary;
+            color: $white;
+        }
+
+        .fa-google {
+            background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+
+        }
+
+        .sign-in {
+            margin: 1em 0;
+            text-align: center;
+        }
+
+    </style>
+    </head>
+    <body>
+    <div class="container">
+        <header class="row text-center">
+            
+        </header>
+        <main class="main row">
+            <div class="left col">
+                <img src="https://img.freepik.com/premium-vector/young-woman-enjoy-sitting-reading-book-hygge-concept-vector-illustration_194708-2078.jpg" alt="girl-reading-a-book" />
+            </div>
+            <div class="right col">
+                <form class="sign-up">
+                    <h4>Don't worry, You are secure here!</h4>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Create a password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Confirm Your Password">
+                    </div>
+                    <button type="submit" class="btn submit-btn btn-outline-dark">Create account</button>
+                </form>
+                
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
