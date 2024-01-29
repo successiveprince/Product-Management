@@ -13,20 +13,12 @@ namespace Product_Management.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+
+        [HttpGet]
+        public IActionResult UserHomePage()
         {
             return View();
         }
-        //[HttpPost]
-        //public IActionResult Verify(User user)
-        //{
-        //    var userInDb = _context.Users.FirstOrDefault(u => u.UserEmail == 
-        //    if(userInDb != null)
-        //    {
-
-        //    })
-        //    return Ok(user);
-        //}
         
     }
 
