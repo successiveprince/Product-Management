@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Product_Management.Data;
+using Product_Management.Models.Dto;
 
 namespace Product_Management.Controllers
 {
@@ -15,10 +16,32 @@ namespace Product_Management.Controllers
         }
 
         [HttpGet]
-        public ActionResult Admin()
+        public async Task<IActionResult> AdminHome()
         {
-            
-            return View();
+            var allProducts = _context.Products.ToList();
+            var productList = await _context.Products.ToListAsync();
+            var categoryList = await _context.Categories.ToListAsync();
+            var categoryProduct = productList.Join(// outer sequence 
+                       categoryList,  // inner sequence 
+                       product => product.ProductCategoryId,   // outerKeySelector
+                       category => category.CategoryId, // innerKeySelector
+                       (product, category) => new CategoryProductDto // result selector
+                       {
+                           ProductId = product.ProductId,
+                           ProductName = product.ProductName,
+                           ProductDescription = product.ProductDescription,
+                           ProductPrice = product.ProductPrice,
+                           ProductImage = product.ProductImage,
+                           IsAvailable = product.IsAvailable,
+                           IsActive = product.IsActive,
+                           ProductCreatedAt = product.ProductCreatedAt,
+                           IsTrending = product.IsTrending,
+                           CategoryId = category.CategoryId,
+                           CategoryName = category.CategoryName
+                       }).OrderByDescending(x => x.ProductCreatedAt).ToList();
+            return View(categoryProduct);
         }
+
+
     }
 }

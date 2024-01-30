@@ -25,13 +25,20 @@ namespace Product_Management.Controllers
         }
 
       
-        [HttpGet]
+      
         public IActionResult Login()
         {
-            //if(_signInManager.IsSignedIn(User))
-            //{
-            //    return RedirectToAction("Index", "Home");
-            //}
+            if (_signInManager.IsSignedIn(User))
+            {
+                if (User.IsInRole("Admin"))
+                {
+                    return RedirectToAction("AdminHome", "Admin");
+                }
+                if (User.IsInRole("User"))
+                {
+                    return RedirectToAction("UserHomePage", "User");
+                }
+            }
             return View();
         }
 
@@ -41,13 +48,13 @@ namespace Product_Management.Controllers
             if (ModelState.IsValid)
             {
                 //login
-                var result = await _signInManager.PasswordSignInAsync(model.UserEmail!, model.UserPassword!, model.RememberMe, false);
+                var result = await _signInManager.PasswordSignInAsync(model.UserEmail!, model.UserPassword!,false, false);          //remember me not working
 
                 if (result.Succeeded)
                 {
                     if (User.IsInRole("Admin"))
                     {
-                        return RedirectToAction("Admin", "Admin");
+                        return RedirectToAction("AdminHome", "Admin");
                     }
                     if (User.IsInRole("User"))
                     {
@@ -82,6 +89,7 @@ namespace Product_Management.Controllers
                     PhoneNo = model.PhoneNo,
                     UserPassword = model.UserPassword,
                     ConfirmPassword = model.ConfirmPassword,
+                    CreatedAt = DateTime.Now
 
                 };
 
