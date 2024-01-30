@@ -1,0 +1,190 @@
+﻿@model List<Product_Management.Models.Dto.CategoryProductDto>
+
+
+@{
+    Layout = "_Layout";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+
+
+    <title>Admin Dashboard</title>
+    <style>
+        .form-control-primary {
+            margin: 10px;
+            opacity: 0.2;
+            border-radius: 2px;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            top: 0;
+            z-index: 100;
+            padding: 70px 0 0 10px;
+            border-right: 1px solid #d3d3d3;
+        }
+
+        .left-sidebar {
+            position: sticky;
+            top: 0;
+            height: calc(100vh - 70px)
+        }
+
+        .sidebar-nav li .nav-link {
+            color: #333;
+            font-weight: 500;
+        }
+
+        main {
+            padding-top: 90px;
+        }
+
+            main .card {
+                margin-bottom: 20px;
+            }
+
+        body {
+            padding: 2em 1rem;
+            text-align: center;
+        }
+
+     
+        
+
+        
+    </style>
+</head>
+
+<body>
+   
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-2 bg-light d-none d-md-block sidebar">
+                <div class="left-sidebar">
+                    <ul class="nav flex-column sidebar-nav">
+                        <li class="nav-item">
+                      
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Category: All
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+                                    <a class="dropdown-item" href="#" onclick="filterImages('all')">All</a>
+                                    <a class="dropdown-item" href="#" onclick="filterImages('fashion')">Fashion</a>
+                                    <a class="dropdown-item" href="#" onclick="filterImages('electronic')">Electronic</a>
+                                    <a class="dropdown-item" href="#" onclick="filterImages('mobile')">Mobile</a>
+                                    <a class="dropdown-item" href="#" onclick="filterImages('beauty')">Beauty</a>
+                                </div>
+                            </div>
+
+                        </li>
+                        <br />
+                        <li class="nav-item">
+                            
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Manage Products
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" asp-action="GetAllProduct" asp-controller="Product">Show Products</a>
+                                    <a class="dropdown-item" asp-action="AddProduct" asp-controller="Product">Add Product</a>
+                                    
+                                </div>
+                            </div>
+                            
+                        </li>
+                        <br />
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary" type="submit"  aria-expanded="false" style="width:10rem">
+                                    <a asp-action="GetAllUser" asp-controller="Auth" style="text-decoration:none; color:white;">Users</a>
+                                </button>
+                               
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+
+               
+                <!--sidebar end-->
+                
+                <h3 class="" style="text-align:center;">All Products</h3>
+
+
+                <div class="table-responsive">
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <thead>
+                            <tr class="text-dark">
+
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Product Description</th>
+                                <th scope="col">Product Price</th>
+                                <th scope="col">Is Available</th>
+                                <th scope="col">Is Trending</th>
+                                <th scope="col">Category Name</th>
+                                <th scope="col">CreatedAt</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Count != 0)
+                            {
+                                @foreach (var product in Model)
+                                {
+                                    <tr>
+                                        <td>@product.ProductName</td>
+                                        <td>@product.ProductDescription</td>
+                                        <td>@product.ProductPrice</td>
+                                        <td>@product.IsAvailable</td>
+                                        <td>@product.IsTrending</td>
+                                        <td>@product.CategoryName</td>
+                                        <td>@product.ProductCreatedAt.Date.ToString("dd-MM-yyyy")</td>
+                                        <td>
+                                            <a class="btn btn-primary" href="/Product/Update/@product.ProductId">Edit</a>
+                                            @if (product.IsActive)
+                                            {
+                                                <a class="btn btn-danger" href="/Product/Deactive/@product.ProductId">Deactive</a>
+                                            }
+                                            else
+                                            {
+                                                <a class="btn btn-success" href="/Product/Active/@product.ProductId">Active</a>
+                                            }
+                                        </td>
+                                    </tr>
+
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
+            </main>
+        </div>
+    </div>
+  
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script></script>
+</body>
+
+</html>
