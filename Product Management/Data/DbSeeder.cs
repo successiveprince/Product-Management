@@ -24,8 +24,8 @@ namespace Product_Management.Data
                 UserName= "admin01@gmail.com",
                 Name = "Prince Kumar",
                 Email = "admin01@gmail.com",              
-                UserPassword = "Admin@123",
-                ConfirmPassword = "Admin@123",
+                UserPassword = "pass@123",
+                ConfirmPassword = "pass@123",
                 Role="Admin",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,
@@ -34,7 +34,7 @@ namespace Product_Management.Data
             var userInDb = await userManager.FindByEmailAsync(user.Email);
             if (userInDb == null)
             {
-                await userManager.CreateAsync(user, "Admin@123");
+                await userManager.CreateAsync(user, "pass@123");
                 await userManager.AddToRoleAsync(user, Roles.Admin.ToString());
             }
         }

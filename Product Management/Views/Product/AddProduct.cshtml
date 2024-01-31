@@ -6,81 +6,102 @@
     var categoryList = ViewBag.CategoryList as List<Product_Management.Models.Domain.Category>;
 }
 
-<html>
-    <head>
-        <style>
-            body{
-               overflow-y:hidden;
-            }
-            .mt200{
-                margin-top:200px;
-            }
-        </style>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            overflow-y: hidden;
+        }
 
-    <div class="container overflow-hidden">
+        .mt-200 {
+            margin-top: 200px;
+        }
+
+        .form-container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-wrapper {
+            width: 80%;
+            max-width: 400px; /* Adjust the max-width as needed */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .form-wrapper h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6">
-
-                <div class="vh-100 d-flex justify-content-center align-items-center">
-
-                    <form asp-action="AddProduct" method="post" enctype="multipart/form-data" asp-controller="Product" class="form-control p-5">
-                        <h2 class="p-3 text-center">Add Product</h2>
-                        <div class="form-group mt-3">
-                            <input asp-for="ProductName" class="form-control" type="text" placeholder="Product Name" />
-                            <span asp-validation-for="ProductName" class="text-danger"></span>
-                        </div>
-                        <div class="form-group mt-3">
-                            <input asp-for="ProductDescription" class="form-control" type="text" placeholder="Product Description" />
-                            <span asp-validation-for="ProductDescription" class="text-danger"></span>
-                        </div>
-                        <div class="form-group mt-3">
-                            <input asp-for="ProductPrice" class="form-control" type="number" placeholder="Product Price" />
-                            <span asp-validation-for="ProductPrice" class="text-danger"></span>
-                        </div>
-                        <div class="form-group mt-3">
-                            <input asp-for="ProductImage" class="form-control" type="file" placeholder="Product Image" />
-                            <span asp-validation-for="ProductImage" class="text-danger"></span>
-                        </div>
-                        <div class="form-group mt-3">
-                            <label asp-for="IsAvailable"></label>
-                            <input asp-for="IsAvailable" type="checkbox" />
-                            <span asp-validation-for="IsAvailable" class="text-danger"></span>
-                        </div>
-                        <div class="form-group mt-3">
-                            <label asp-for="IsTrending"></label>
-                            <input asp-for="IsTrending" type="checkbox" />
-                            <span asp-validation-for="IsTrending" class="text-danger"></span>
-                        </div>
-                        <div class="form-group mt-3">
-                            <select class="form-select" aria-label="Default select example" asp-for="ProductCategoryId">
-                                <option selected value="0">All</option>
-                                @if (categoryList != null)
-                                {
-                                    @foreach (var x in categoryList)
+            <div class="col-lg-12">
+                <div class="form-container">
+                    <div class="form-wrapper">
+                        <form asp-action="AddProduct" method="post" enctype="multipart/form-data" asp-controller="Product" class="p-5">
+                            <h2>Add Product</h2>
+                            <div class="form-group">
+                                <select class="form-select mb-3" aria-label="Default select example" asp-for="ProductCategoryId">
+                                    <option selected value="0">All</option>
+                                    @if (categoryList != null)
                                     {
-
-                                        @if (x.CategoryName != "All")
+                                        @foreach (var x in categoryList)
                                         {
-                                            <option value="@x.CategoryId">@x.CategoryName</option>
+                                            @if (x.CategoryName != "All")
+                                            {
+                                                <option value="@x.CategoryId">@x.CategoryName</option>
+                                            }
                                         }
                                     }
-                                }
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary mt-3">Add Product</button>
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="container d-flex justify-content-center align-item-center">
-                    <img src="https://img.freepik.com/free-vector/ecommerce-checkout-laptop-concept-illustration_114360-8243.jpg?size=626&ext=jpg&ga=GA1.1.1036767008.1706037099&semt=ais" class="w-75 mt200" alt="img" />
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input asp-for="ProductName" class="form-control" type="text" placeholder="Product Name" />
+                                <span asp-validation-for="ProductName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input asp-for="ProductDescription" class="form-control" type="text" placeholder="Product Description" />
+                                <span asp-validation-for="ProductDescription" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input asp-for="ProductPrice" class="form-control" type="number" placeholder="Product Price" />
+                                <span asp-validation-for="ProductPrice" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input asp-for="ProductImage" class="form-control" type="file" placeholder="Product Image" />
+                                <span asp-validation-for="ProductImage" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="IsAvailable"></label>
+                                <input asp-for="IsAvailable" type="checkbox" />
+                                <span asp-validation-for="IsAvailable" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="IsTrending"></label>
+                                <input asp-for="IsTrending" type="checkbox" />
+                                <span asp-validation-for="IsTrending" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Product</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </body>
+
+</body>
 </html>
 
 

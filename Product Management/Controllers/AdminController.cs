@@ -14,10 +14,11 @@ namespace Product_Management.Controllers
         {
             _context = context;
         }
-
+       
         [HttpGet]
         public async Task<IActionResult> AdminHome()
         {
+            //GetAll
             var allProducts = _context.Products.ToList();
             var productList = await _context.Products.ToListAsync();
             var categoryList = await _context.Categories.ToListAsync();
@@ -42,6 +43,35 @@ namespace Product_Management.Controllers
             return View(categoryProduct);
         }
 
+        #region API CALLS
+        [HttpGet]
+        public async Task<IActionResult> GetAllAsync()
+        {
+            var allProducts = _context.Products.ToList();
+            var productList = await _context.Products.ToListAsync();
+            var categoryList = await _context.Categories.ToListAsync();
+            var categoryProduct = productList.Join(// outer sequence 
+                       categoryList,  // inner sequence 
+                       product => product.ProductCategoryId,   // outerKeySelector
+                       category => category.CategoryId, // innerKeySelector
+                       (product, category) => new CategoryProductDto // result selector
+                       {
+                           ProductId = product.ProductId,
+                           ProductName = product.ProductName,
+                           ProductDescription = product.ProductDescription,
+                           ProductPrice = product.ProductPrice,
+                           ProductImage = product.ProductImage,
+                           IsAvailable = product.IsAvailable,
+                           IsActive = product.IsActive,
+                           ProductCreatedAt = product.ProductCreatedAt,
+                           IsTrending = product.IsTrending,
+                           CategoryId = category.CategoryId,
+                           CategoryName = category.CategoryName
+                       }).OrderByDescending(x => x.ProductCreatedAt).ToList();
+
+            return Json(new { data = categoryProduct });
+        }
+        #endregion
 
     }
 }

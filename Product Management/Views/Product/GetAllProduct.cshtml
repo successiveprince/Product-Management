@@ -4,52 +4,31 @@
 @{
     ViewData["Title"] = "GetAllProduct";
 }
-<h3 class=""style="text-align:center; margin-top:10%;">All Products</h3>
+<html>
+    <body>
+    <h3 class="" style="text-align:center; margin-top:10%;">All Products</h3>
 
-            
-            <div class="table-responsive">
-                <table class="table text-start align-middle table-bordered table-hover mb-0">
-                    <thead>
-                        <tr class="text-dark">
 
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Product Description</th>
-                            <th scope="col">Product Price</th>
-                            <th scope="col">Is Available</th>
-                            <th scope="col">Is Trending</th>
-                            <th scope="col">Category Name</th>
-                            <th scope="col">CreatedAt</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                       @if (Model != null)
-                        {
-                            @foreach (var product in Model)
-                            {
-                                <tr>
-                                    <td>@product.ProductName</td>
-                                    <td>@product.ProductDescription</td>
-                                    <td>@product.ProductPrice</td>
-                                    <td>@product.IsAvailable</td>
-                                    <td>@product.IsTrending</td>
-                                    <td>@product.CategoryName</td>
-                                    <td>@product.ProductCreatedAt.Date.ToString("dd-MM-yyyy")</td>
-                                    <td>
-                                        <a class="btn btn-primary" href="/Product/Update/@product.ProductId">Edit</a>
-                                        @if (product.IsActive)
-                                        {
-                                            <a class="btn btn-danger" href="/Product/Deactive/@product.ProductId">Deactive</a>
-                                        }
-                                        else
-                                        {
-                                            <a class="btn btn-success" href="/Product/Active/@product.ProductId">Active</a>
-                                        }
-                                    </td>
-                                </tr>
+    <div class="table-responsive">
+        <table id="myTable" class="table text-start align-middle table-bordered table-hover mb-0">
+            <thead>
+                <tr class="text-dark">
 
-                            }
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    <th >Product Name</th>
+                    <th >Product Description</th>
+                    <th >Product Price</th>
+                    @* <th scope="col">Is Available</th>
+                    <th scope="col">Is Trending</th> *@
+                    <th >Category Name</th>
+                    <th >CreatedAt</th>
+                    @*  <th scope="col">Action</th> *@
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+    @section Scripts {
+        <script src="~/js/product.js"></script>
+    }
+    </body>
+</html>

@@ -9,7 +9,7 @@ namespace Product_Management.Models.Dto
 
         public string ProductDescription { get; set; } 
 
-        public int ProductPrice { get; set; }
+        public float ProductPrice { get; set; }
 
         public IFormFile ProductImage { get; set; }
 

@@ -16,6 +16,7 @@ namespace Product_Management.Controllers
             _productDbContext = productDbContext;
             _webHostEnvironment = webHostEnvironment;
         }
+        
         [HttpGet]
         public async Task<IActionResult> GetAllProduct()
         {
@@ -67,7 +68,7 @@ namespace Product_Management.Controllers
                     ProductDescription = addProductDto.ProductDescription,
                     ProductPrice = addProductDto.ProductPrice,
                     IsAvailable = addProductDto.IsAvailable,
-                    //IsActive = addProductDto.IsActive,
+                   
                     IsTrending = addProductDto.IsTrending,
                     ProductCreatedAt = DateTime.Now,
                     ProductCategoryId = addProductDto.ProductCategoryId,
@@ -81,5 +82,59 @@ namespace Product_Management.Controllers
             }
             return View(addProductDto);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Update(int id)
+        {
+            var product = await _productDbContext.Products.FirstOrDefaultAsync(x => x.ProductId == id);
+            ViewBag.CategoryList = await _productDbContext.Categories.ToListAsync();
+            if (product != null)
+            {
+                var newProduct = new UpdateProductDto()
+                {
+                    ProductId = product.ProductId,
+                    ProductName = product.ProductName,
+                    ProductPrice = product.ProductPrice,
+                    ProductDescription = product.ProductDescription,
+                    IsAvailable = product.IsAvailable,
+                    IsTrending = product.IsTrending,
+                    ProductCategoryId = product.ProductCategoryId,
+                    Category = product.Category,
+                };
+                return await Task.Run(() => View("UpdateProduct", newProduct));
+            }
+            return RedirectToAction("AdminHome" , "Admin");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(UpdateProductDto updateProductDto)
+        {
+            var product = await _productDbContext.Products.FirstOrDefaultAsync(x => x.ProductId == updateProductDto.ProductId);
+            ViewBag.CaterogyList = _productDbContext.Categories.ToList();
+
+            string uniqueFileName = "";
+            if (updateProductDto.ProductImage != null)
+            {
+                string uploadFoler = Path.Combine(_webHostEnvironment.WebRootPath, "image");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + updateProductDto.ProductImage.FileName;
+                string filePath = Path.Combine(uploadFoler, uniqueFileName);
+                updateProductDto.ProductImage.CopyTo(new FileStream(filePath, FileMode.Create));
+            }
+
+            if (product != null)
+            {
+                product.ProductName = updateProductDto.ProductName;
+                product.ProductPrice = updateProductDto.ProductPrice;
+                product.ProductDescription = updateProductDto.ProductDescription;
+                product.ProductImage = uniqueFileName;
+                product.IsAvailable = updateProductDto.IsAvailable;
+                product.IsTrending = updateProductDto.IsTrending;
+                product.ProductCategoryId = updateProductDto.ProductCategoryId;
+            }
+            await _productDbContext.SaveChangesAsync();
+            return RedirectToAction("AdminHome", "Admin");
+        }
+
+        
     }
 }

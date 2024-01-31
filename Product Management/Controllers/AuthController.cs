@@ -48,7 +48,7 @@ namespace Product_Management.Controllers
             if (ModelState.IsValid)
             {
                 //login
-                var result = await _signInManager.PasswordSignInAsync(model.UserEmail!, model.UserPassword!,false, false);          //remember me not working
+                var result = await _signInManager.PasswordSignInAsync(model.UserEmail!, model.UserPassword!,model.RememberMe, false);          //remember me not working
 
                 if (result.Succeeded)
                 {
