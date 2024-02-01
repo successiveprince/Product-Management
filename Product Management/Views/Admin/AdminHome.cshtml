@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
+    <!-- Include jQuery -->
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include DataTables JS -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.10/js/jquery.dataTables.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>Admin Dashboard</title>
     <style>
@@ -47,7 +52,7 @@
         }
 
         main {
-            padding-top: 90px;
+            padding-top: 50px;
         }
 
             main .card {
@@ -59,8 +64,43 @@
             text-align: center;
         }
 
-     
-        
+        /* Custom Styles for the Category Dropdown */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-select {
+            align-content:center;
+            width: 70%;
+            padding: 7px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            color: #495057;
+            cursor: pointer;
+            text-align:center;
+        }
+
+            /* Add some hover effect */
+            .form-select:hover {
+                border-color: #6c757d;
+            }
+
+        /* Custom styling for the checkbox */
+        #IsAvailableCheckbox:checked + .form-check-label {
+            border:1px solid black;
+            border-radius:5px;
+            padding:5px;
+            background-color: #3498db; /* Background color when checked */
+            color: #fff; /* Text color when checked */
+        }
 
         
     </style>
@@ -75,33 +115,30 @@
                 <div class="left-sidebar">
                     <ul class="nav flex-column sidebar-nav">
                         <li class="nav-item">
-                      
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Category: All
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="categoryDropdown">
-                                    <a class="dropdown-item" href="#" onclick="filterImages('all')">All</a>
-                                    <a class="dropdown-item" href="#" onclick="filterImages('fashion')">Fashion</a>
-                                    <a class="dropdown-item" href="#" onclick="filterImages('electronic')">Electronic</a>
-                                    <a class="dropdown-item" href="#" onclick="filterImages('mobile')">Mobile</a>
-                                    <a class="dropdown-item" href="#" onclick="filterImages('beauty')">Beauty</a>
-                                </div>
+
+                            <div class="form-group mt-5">
+                                <label for="FilterByCategory" class="form-label"><b>Category:</b></label>
+                                <select class="form-select mx-5" id="FilterByCategory">
+                                    <option value="all">All</option >
+                                    <option value="fashion">Fashion</option>
+                                    <option value="electronic">Electronic</option>
+                                    <option value="mobile">Mobile</option>
+                                    <option value="beauty">Beauty</option>
+                                </select>
                             </div>
+
+
 
                         </li>
                         <br />
                         <li class="nav-item">
                             
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Products
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" asp-action="GetAllProduct" asp-controller="Product">Show Products</a>
-                                    <a class="dropdown-item" asp-action="AddProduct" asp-controller="Product">Add Product</a>
-                                    
-                                </div>
+                            <div>
+                                <a class="btn btn-secondary" style="width: 10rem" 
+                                   href="@Url.Action("AddProduct", "Product")?selectedCategory=" 
+                                   + encodeURIComponent($('#FilterByCategory').val())">
+                                    Add Product
+                                </a>
                             </div>
                             
                         </li>
@@ -122,6 +159,18 @@
             <!--sidebar end-->
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
+                <div class="mb-3 form-check d-flex">
+                    <input type="checkbox" class="form-check-input" id="IsAvailableCheckbox" />
+                    <label class="form-check-label ms-2 mb-0" for="IsAvailable">Active</label>
+                    <span class="text-danger"></span>
+                </div>
+
+                @* <div class="mb-3 form-check d-flex">
+                    <input type="checkbox" class="form-check-input" id="IsTrendingCheckbox" />
+                    <label class="form-check-label ms-2 mb-0" for="IsTrending">Trending</label>
+                    <span class="text-danger"></span>
+                </div>
+ *@
 
                
           
@@ -165,22 +214,23 @@
                         </tbody>
                     </table>
                 </div>
- *@
-                <table id="tblData" class="table table-striped table-bordered table-hover mb-0">
+ *@             
+                <table id="tblData" class="table table-striped table-bordered table-hover mb-0" style="border-top: 2px solid #343a40;">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Product Name</th>
                             <th scope="col">Product Description</th>
                             <th scope="col">Product Price</th>
-                            <!-- Uncomment the lines below if needed -->
-                            <th scope="col">Is Available</th>
-                            <!-- <th scope="col">Is Trending</th> -->
-                             <th scope="col">Category Name</th>
-                             <th scope="col">CreatedAt</th> 
-                            <th scope="col">Action</th>
+                            <th scope="col">Active</th>
+                            <th scope="col">Trending</th>
+                            <th scope="col">Category Name</th>
+                            <th scope="col">CreatedAt</th>
+                            <th scope="col" style="text-align:center;">Action</th>
                         </tr>
                     </thead>
+                    
                 </table>
+
 
 
 

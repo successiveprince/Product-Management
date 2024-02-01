@@ -50,16 +50,16 @@
             <input asp-for="ProductImage" class="form-control" type="file" placeholder="Product Image" required />
             <span asp-validation-for="ProductImage" class="text-danger"></span>
         </div>
-       @*  <div class="mb-3 form-check">
+        <div class="mb-3 form-check">
             <input asp-for="IsAvailable" type="checkbox" class="form-check-input" id="IsAvailable" />
-            <label class="form-check-label" for="IsAvailable">Is Available</label>
+            <label class="form-check-label" for="IsAvailable">Is Active</label>
             <span asp-validation-for="IsAvailable" class="text-danger"></span>
         </div>
         <div class="mb-3 form-check">
             <input asp-for="IsTrending" type="checkbox" class="form-check-input" id="IsTrending" />
             <label class="form-check-label" for="IsTrending">Is Trending</label>
             <span asp-validation-for="IsTrending" class="text-danger"></span>
-        </div> *@
+        </div>
         
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

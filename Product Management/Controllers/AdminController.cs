@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Product_Management.Data;
 using Product_Management.Models.Dto;
 
 namespace Product_Management.Controllers
+
 {
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
@@ -40,6 +42,8 @@ namespace Product_Management.Controllers
                            CategoryId = category.CategoryId,
                            CategoryName = category.CategoryName
                        }).OrderByDescending(x => x.ProductCreatedAt).ToList();
+            ViewBag.CategoryList = await _context.Categories.ToListAsync();
+            ViewBag.SelectedCategory = "fashion";
             return View(categoryProduct);
         }
 
@@ -72,6 +76,45 @@ namespace Product_Management.Controllers
             return Json(new { data = categoryProduct });
         }
         #endregion
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateUser(string id)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+            
+            if (user != null)
+            {
+                var newUser = new UpdateUserDto()
+                {
+                    Name = user.Name,
+                    Email = user.Email,
+                    PhoneNo = user.PhoneNo,
+                    UserPassword = user.UserPassword,
+                    CreatedAt = DateTime.UtcNow
+                };
+                return await Task.Run(() => View("UpdateUser", newUser));
+            }
+            return RedirectToAction("GetAllUser", "Auth");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateUser(UpdateUserDto updateUserDto)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == updateUserDto.Id);
+
+            if (user != null)
+            {
+
+                user.Name = updateUserDto.Name;
+                user.PhoneNo = updateUserDto.PhoneNo;
+                user.Email = updateUserDto.Email;
+                user.UserPassword = updateUserDto.UserPassword;
+                user.CreatedAt = DateTime.UtcNow;
+
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction("GetAllUser", "Auth");
+        }
 
     }
 }

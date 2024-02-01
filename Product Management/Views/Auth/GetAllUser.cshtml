@@ -5,7 +5,9 @@
     ViewData["Title"] = "Users";
 }
 
-<h1 style="text-align:center; margin-top:7%;">All Users</h1>
+<a class="btn btn-primary ml-auto" asp-action="Register" asp-controller="Auth" style="margin-top: 10%; padding: 8px 20px; border-radius: 5px; font-weight: bold; background-color: #4CAF50; color: #fff; text-decoration: none; text-align: center; display: inline-block;">Add User</a>
+
+<h1 style="text-align:center; margin-top:2%;">All Users</h1>
 
 @if (Model.Any())
 {
@@ -46,7 +48,7 @@
                                 <td>@x.UserPassword</td>
                                 <td>@x.CreatedAt</td>
                                 <td>
-                                    <a class="btn btn-primary" asp-action="UpdateProduct" asp-controller="Product" asp-route-id="@x.Id">Edit</a>
+                                    <a class="btn btn-primary" asp-action="UpdateUser" asp-controller="Admin" asp-route-id="@x.Id">Edit</a>
                                    @*  <a class="btn btn-danger" asp-action="DeleteProduct" asp-controller="Authenication" asp-route-id="@x.Id">Deactive</a> *@
                                 </td>
                             </tr>

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Product_Management.Data;
 using Product_Management.Models.Domain;
 using Product_Management.Models.Dto;
+using System;
 
 namespace Product_Management.Controllers
 {
@@ -46,6 +47,7 @@ namespace Product_Management.Controllers
         public async Task<IActionResult> AddProduct()
         {
             ViewBag.CategoryList = await _productDbContext.Categories.ToListAsync();
+            ViewBag.SelectedCategory = ViewBag.SelectedCategory ?? 0;
             return View();
         }
 
@@ -67,7 +69,7 @@ namespace Product_Management.Controllers
                     ProductName = addProductDto.ProductName,
                     ProductDescription = addProductDto.ProductDescription,
                     ProductPrice = addProductDto.ProductPrice,
-                    IsAvailable = addProductDto.IsAvailable,
+                    IsAvailable = true,
                    
                     IsTrending = addProductDto.IsTrending,
                     ProductCreatedAt = DateTime.Now,
@@ -77,8 +79,14 @@ namespace Product_Management.Controllers
                 _productDbContext.Add(product);
                 await _productDbContext.SaveChangesAsync();
                 ViewBag.Success = "Product added successfully";
-                
+                TempData["productsuccess"] = "Product Added Successfully";
+
                 return RedirectToAction("AdminHome" , "Admin");
+            }
+            else
+            {
+                // Display a message indicating that the form is not valid
+                TempData["error"] = "Please fill in all required fields.";
             }
             return View(addProductDto);
         }
@@ -135,6 +143,35 @@ namespace Product_Management.Controllers
             return RedirectToAction("AdminHome", "Admin");
         }
 
-        
+        [HttpGet]
+        public async Task<IActionResult> Active(int id)
+        {
+            var product = _productDbContext.Products.FirstOrDefault(x => x.ProductId == id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+            product.IsAvailable = true;
+            await _productDbContext.SaveChangesAsync();
+            return RedirectToAction("Adminhome", "Admin");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Deactive(int id)
+        {
+            var product = _productDbContext.Products.FirstOrDefault(x => x.ProductId == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            product.IsAvailable = false;
+            await _productDbContext.SaveChangesAsync();
+            return RedirectToAction("AdminHome", "Admin");
+        }
+
+
     }
+
+
 }

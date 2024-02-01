@@ -1,0 +1,40 @@
+﻿@model Product_Management.Models.Dto.UpdateUserDto;
+
+@{
+    ViewData["Title"] = "Update User";
+   
+}
+
+<h2 style="margin-top:10%">Update User</h2>
+
+<form asp-action="UpdateUser" method="post" enctype="multipart/form-data" asp-controller="Admin" class="needs-validation" novalidate>
+   @*  <div class="mb-3">
+        <label for="UserId" class="form-label">User Id</label>
+        <input asp-for="UserId" class="form-control" readonly />
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div> *@
+   
+    <div class="mb-3">
+        <label for="Name" class="form-label">User Name</label>
+        <input asp-for="Name" class="form-control" type="text" placeholder="User Name"/>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="PhoneNo" class="form-label">Phone No</label>
+        <input asp-for="PhoneNo" class="form-control" type="number" placeholder="Phone no" />
+        <span asp-validation-for="PhoneNo" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input asp-for="Email" class="form-control" type="email" placeholder="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="UserPassword" class="form-label">User Password</label>
+        <input asp-for="UserPassword" class="form-control" type="text" placeholder="UserPassword"/>
+        <span asp-validation-for="UserPassword" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
