@@ -26,7 +26,7 @@ namespace Product_Management.Models.Dto
 
         
         public DateTime CreatedAt { get; set; }
-        public Boolean IsActive { get; set; }
+        public bool IsActive { get; set; }
 
     }
 }

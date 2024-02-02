@@ -134,19 +134,21 @@
                         <li class="nav-item">
                             
                             <div>
-                                <a class="btn btn-secondary" style="width: 10rem" 
-                                   href="@Url.Action("AddProduct", "Product")?selectedCategory=" 
-                                   + encodeURIComponent($('#FilterByCategory').val())">
-                                    Add Product
-                                </a>
+                                <div>
+                                    <a class="btn btn-secondary" style="width: 10rem; background-color: #4CAF50"
+                                       href="@Url.Action("AddProduct", "Product")" onclick="setCategoryInAddProductForm()">
+                                        <b> Add Product </b>
+                                    </a>
+                                </div>
+
                             </div>
                             
                         </li>
                         <br />
                         <li class="nav-item">
                             <div class="dropdown">
-                                <button class="btn btn-secondary" type="submit"  aria-expanded="false" style="width:10rem">
-                                    <a asp-action="GetAllUser" asp-controller="Auth" style="text-decoration:none; color:white;">Users</a>
+                                <button class="btn btn-secondary" type="submit" aria-expanded="false" style="width:10rem;background-color: #4CAF50">
+                                    <a asp-action="GetAllUser" asp-controller="Auth" style="text-decoration:none; color:white;"><b>Users</b></a>
                                 </button>
                                
                             </div>

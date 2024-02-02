@@ -11,6 +11,6 @@ namespace Product_Management.Models.Dto
         [DataType(DataType.Password)]
         [MinLength(8, ErrorMessage = "Password should have at least 8 characters.")]
         public string? UserPassword { get; set; }
-        public bool RememberMe { get; set; }
+        public bool IsActive { get; set; }
     }
 }

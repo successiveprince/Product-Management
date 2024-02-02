@@ -90,7 +90,8 @@ namespace Product_Management.Controllers
                     Email = user.Email,
                     PhoneNo = user.PhoneNo,
                     UserPassword = user.UserPassword,
-                    CreatedAt = DateTime.UtcNow
+                    CreatedAt = DateTime.UtcNow,
+                    IsActive = user.IsActive
                 };
                 return await Task.Run(() => View("UpdateUser", newUser));
             }
@@ -110,11 +111,16 @@ namespace Product_Management.Controllers
                 user.Email = updateUserDto.Email;
                 user.UserPassword = updateUserDto.UserPassword;
                 user.CreatedAt = DateTime.UtcNow;
-
+                user.IsActive = updateUserDto.IsActive;
             }
             await _context.SaveChangesAsync();
             return RedirectToAction("GetAllUser", "Auth");
         }
 
+        [HttpGet]
+        public IActionResult ViewProfile()
+        {
+            return View();
+        }
     }
 }

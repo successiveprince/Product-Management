@@ -30,8 +30,7 @@ namespace Product_Management.Models.Domain
         public string ConfirmPassword { get; set; }
         public string? Role { get; set; } = "User";
         public DateTime CreatedAt { get; set;}
-        public Boolean IsActive { get; set;}
-
+        public Boolean IsActive { get; set;} = true;
         public ICollection<Cart> Carts { get; set;}
     }
 }

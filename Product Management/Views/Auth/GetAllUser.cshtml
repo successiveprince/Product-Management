@@ -27,31 +27,36 @@
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Phone no</th>
-                            <th scope="col">Role</th>
+                           @*  <th scope="col">Role</th> *@
                             <th scope="col">Password</th>
                             <th scope="col">CreatedAt</th>
+                            <th scope="col">IsActive</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var x in Model)
                         {
-                            <tr>
-                                <td>@x.Id</td>
-                                <td>@x.Name</td>
+                            @if(x.Role == "User")
+                            {
+                                <tr>
+                                    <td>@x.Id</td>
+                                    <td>@x.Name</td>
 
-                                <td>@x.Email</td>
+                                    <td>@x.Email</td>
 
-                                <td>@x.PhoneNo</td>
-                                <td>@x.Role</td>
+                                    <td>@x.PhoneNo</td>
+                                   @*  <td>@x.Role</td> *@
 
-                                <td>@x.UserPassword</td>
-                                <td>@x.CreatedAt</td>
-                                <td>
-                                    <a class="btn btn-primary" asp-action="UpdateUser" asp-controller="Admin" asp-route-id="@x.Id">Edit</a>
-                                   @*  <a class="btn btn-danger" asp-action="DeleteProduct" asp-controller="Authenication" asp-route-id="@x.Id">Deactive</a> *@
-                                </td>
-                            </tr>
+                                    <td>@x.UserPassword</td>
+                                    <td>@x.CreatedAt</td>
+                                    <td>@x.IsActive</td>
+                                    <td>
+                                        <a class="btn btn-primary" asp-action="UpdateUser" asp-controller="Admin" asp-route-id="@x.Id">Edit</a>
+                                        @*  <a class="btn btn-danger" asp-action="DeleteProduct" asp-controller="Authenication" asp-route-id="@x.Id">Deactive</a> *@
+                                    </td>
+                                </tr>
+                            }
                         }
                     </tbody>
                 </table>

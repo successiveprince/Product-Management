@@ -24,8 +24,8 @@ namespace Product_Management.Controllers
             _roleManager = roleManager;
         }
 
-      
-      
+
+        [HttpGet]
         public IActionResult Login()
         {
             if (_signInManager.IsSignedIn(User))
@@ -47,23 +47,30 @@ namespace Product_Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                //login
-                var result = await _signInManager.PasswordSignInAsync(model.UserEmail!, model.UserPassword!,model.RememberMe, false);          //remember me not working
 
-                if (result.Succeeded)
+                bool checkIsActivate = _userManager.Users.First(x => x.Email == model.UserEmail).IsActive;
+                if(checkIsActivate)
                 {
-                    if (User.IsInRole("Admin"))
-                    {
-                        return RedirectToAction("AdminHome", "Admin");
-                    }
-                    if (User.IsInRole("User"))
-                    {
-                        return RedirectToAction("UserHomePage", "User");
-                    }
-                }
+                    //login
+                    var result = await _signInManager.PasswordSignInAsync(model.UserEmail!, model.UserPassword!, model.IsActive, false);
 
-                ModelState.AddModelError("", "Invalid login attempt");
-                return View(model);
+                    if (result.Succeeded)
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            return RedirectToAction("AdminHome", "Admin");
+                        }
+                        if (User.IsInRole("User"))
+                        {
+                            return RedirectToAction("UserHomePage", "User");
+                        }
+                    }
+
+                    ModelState.AddModelError("", "Invalid login attempt");
+                    return View(model);
+                }
+               
+               
             }
             return View(model);
         }
@@ -78,7 +85,7 @@ namespace Product_Management.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(AddUserDto model)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) 
             {
                 var user = new UserModel
                 {
@@ -92,13 +99,15 @@ namespace Product_Management.Controllers
                     CreatedAt = DateTime.Now
 
                 };
-
+                
                 var result = await _userManager.CreateAsync(user, model.UserPassword!);
 
                 if (result.Succeeded)
                 {
                     if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                     {
+                        await _userManager.AddToRoleAsync(user, Roles.User.ToString()!);
+                        await _signInManager.SignInAsync(user, isPersistent: false);
                         return RedirectToAction("GetAllUser", "Auth");
                     }
                     await _userManager.AddToRoleAsync(user, Roles.User.ToString()!);
@@ -116,6 +125,7 @@ namespace Product_Management.Controllers
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
+
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login");
         }

@@ -12,6 +12,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <style>
         body {
             overflow-y: hidden;
@@ -50,59 +52,51 @@
             <div class="col-lg-12">
                 <div class="form-container">
                     <div class="form-wrapper">
-                        <form asp-action="AddProduct" method="post" enctype="multipart/form-data" asp-controller="Product" class="p-5">
+                        <form id="AddProductForm" asp-action="AddProduct" method="post" enctype="multipart/form-data" asp-controller="Product" class="p-5">
                             <h2>Add Product</h2>
                             <div class="form-group">
-                                <select class="form-select mb-3" aria-label="Default select example" asp-for="ProductCategoryId">
-                                    <option selected value="0">All</option>
+                                <input type="hidden" id="SelectedCategory" name="SelectedCategory" />
+                                <!-- Category dropdown -->
+                                <select class="form-select mb-3" aria-label="Default select example" asp-for="ProductCategoryId" required>
+                                    <option disabled selected value="">Select a Category</option>
                                     @if (categoryList != null)
                                     {
-                                        @foreach (var x in categoryList)
+                                        foreach (var x in categoryList)
                                         {
-                                            @* @if (x.CategoryName != "All")
-                                            {
-                                                <option value="@x.CategoryId">@x.CategoryName</option>
-                                                <option value="@x.CategoryId" @(x.CategoryId == ViewBag.SelectedCategory ? "selected" : "")>@x.CategoryName</option>
-                                            } *@
                                             <option value="@x.CategoryId" selected="@(x.CategoryId == ViewBag.SelectedCategory)">@x.CategoryName</option>
-                                        
                                         }
                                     }
                                 </select>
+                                <span asp-validation-for="ProductCategoryId" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <input asp-for="ProductName" class="form-control" type="text" placeholder="Product Name" />
+                                <input asp-for="ProductName" class="form-control" type="text" placeholder="Product Name" required />
                                 <span asp-validation-for="ProductName" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <input asp-for="ProductDescription" class="form-control" type="text" placeholder="Product Description" />
+                                <input asp-for="ProductDescription" class="form-control" type="text" placeholder="Product Description" required />
                                 <span asp-validation-for="ProductDescription" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <input asp-for="ProductPrice" class="form-control" type="number" placeholder="Product Price" />
+                                <input asp-for="ProductPrice" class="form-control" type="number" placeholder="Product Price" required />
                                 <span asp-validation-for="ProductPrice" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <input asp-for="ProductImage" class="form-control" type="file" placeholder="Product Image" />
+                                <input asp-for="ProductImage" class="form-control" type="file" placeholder="Product Image" required />
                                 <span asp-validation-for="ProductImage" class="text-danger"></span>
                             </div>
-                            @* <div class="form-group">
-                                <label asp-for="IsAvailable"></label>
-                                <input asp-for="IsAvailable" type="checkbox" />
-                                <span asp-validation-for="IsAvailable" class="text-danger"></span>
-                            </div> *@
-                           @*  <div class="form-group">
-                                <label asp-for="IsTrending"></label>
-                                <input asp-for="IsTrending" type="checkbox" />
-                                <span asp-validation-for="IsTrending" class="text-danger"></span>
-                            </div> *@
                             <button type="submit" class="btn btn-primary">Add Product</button>
                         </form>
+
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
+
+   
 
 </body>
 </html>

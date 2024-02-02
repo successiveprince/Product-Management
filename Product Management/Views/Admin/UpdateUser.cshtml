@@ -34,6 +34,11 @@
         <input asp-for="UserPassword" class="form-control" type="text" placeholder="UserPassword"/>
         <span asp-validation-for="UserPassword" class="text-danger"></span>
     </div>
+    <div class="mb-3 form-check">
+        <input asp-for="IsActive" type="checkbox" class="form-check-input" id="IsActive" />
+        <label class="form-check-label" for="IsActive">Is Active</label>
+        <span asp-validation-for="IsActive" class="text-danger"></span>
+    </div>
 
     <button type="submit" class="btn btn-primary">Update</button>
 </form>

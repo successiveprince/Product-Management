@@ -15,9 +15,9 @@ function loadDataTable() {
             { data: 'productName', "width": "15%" },
             { data: 'productDescription', "width": "15%" },
             { data: 'productPrice', "width": "15%" },
-           /* { data: 'productImage', "width": "15%" },*/ // Add this line for productImage
-            { data: 'isAvailable', "width": "15%" } , // Add this line for isAvailable
-            /*{ data: 'isActive', "width": "15%" },*/      // Add this line for isActive
+           /* { data: 'productImage', "width": "15%" },*/ 
+            { data: 'isAvailable', "width": "15%" } , 
+            /*{ data: 'isActive', "width": "15%" },*/     
             
             { data: 'isTrending', "width": "15%" },
             { data: 'categoryName', "width": "15%" },
@@ -30,8 +30,8 @@ function loadDataTable() {
             {
                 data: 'productId',
                 render: function (data, type, row) {
-                    var productId = row.productId; // Assuming you have a 'productId' property in your row data
-                    var isAvailable = row.isAvailable; // Assuming you have an 'isAvailable' property in your row data
+                    var productId = row.productId; 
+                    var isAvailable = row.isAvailable;
 
                     var updateBtn = `<a href="/Product/Update/${productId}" class="btn btn-warning mx-2">
                             <i class="bi bi-pencil-square"></i> Edit
@@ -54,7 +54,7 @@ function loadDataTable() {
 
 
         ],
-        "order": [[4, 'desc']] // sort by the 'productCreatedAt' column in descending order
+        "order": [[4, 'desc']]
     });
     
 
@@ -63,8 +63,8 @@ function loadDataTable() {
 
         console.log('Checkbox state:', isAvailableChecked);
 
-        // Use DataTable's search API to filter rows based on checkbox status
-        var columnIndex = 3; // Change this to the correct index
+        
+        var columnIndex = 3; 
         var searchTerm = isAvailableChecked ? 'true' : '';
 
         console.log('Applying search:', searchTerm);
@@ -90,13 +90,13 @@ function loadDataTable() {
         console.log('Change event triggered');
         var selectedCategory = $(this).val();
 
-        // Clear both global and category search
+       
         dataTable.search('').columns().search('').draw();
 
         // Apply category filter if not "All"
         if (selectedCategory !== 'all') {
             console.log('Applying category filter:', selectedCategory);
-            dataTable.column(5).search(selectedCategory).draw(); // Assuming categoryName is at index 4
+            dataTable.column(5).search(selectedCategory).draw(); 
         }
     });
 

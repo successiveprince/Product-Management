@@ -25,5 +25,6 @@ namespace Product_Management.Models.Dto
         [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
+        public bool IsActive { get; set; } = true;
     }
 }
