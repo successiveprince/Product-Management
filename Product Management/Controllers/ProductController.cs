@@ -107,7 +107,8 @@ namespace Product_Management.Controllers
                     IsAvailable = product.IsAvailable,
                     IsTrending = product.IsTrending,
                     ProductCategoryId = product.ProductCategoryId,
-                    Category = product.Category,
+                    Category = product.Category
+                 
                 };
                 return await Task.Run(() => View("UpdateProduct", newProduct));
             }
@@ -135,7 +136,7 @@ namespace Product_Management.Controllers
                 product.ProductPrice = updateProductDto.ProductPrice;
                 product.ProductDescription = updateProductDto.ProductDescription;
                 product.ProductImage = uniqueFileName;
-                product.IsAvailable = updateProductDto.IsAvailable;
+               
                 product.IsTrending = updateProductDto.IsTrending;
                 product.ProductCategoryId = updateProductDto.ProductCategoryId;
             }

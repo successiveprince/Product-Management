@@ -43,7 +43,7 @@ namespace Product_Management.Controllers
                            CategoryName = category.CategoryName
                        }).OrderByDescending(x => x.ProductCreatedAt).ToList();
             ViewBag.CategoryList = await _context.Categories.ToListAsync();
-            ViewBag.SelectedCategory = "fashion";
+            
             return View(categoryProduct);
         }
 
