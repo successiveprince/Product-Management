@@ -5,8 +5,8 @@ namespace Product_Management.Models.Domain
 {
     public class UserModel : IdentityUser
     {
-        [Key]
-        public int UserId { get; set; }
+      
+      
 
         [Required]
         [StringLength(50)]
@@ -31,6 +31,6 @@ namespace Product_Management.Models.Domain
         public string? Role { get; set; } = "User";
         public DateTime CreatedAt { get; set;}
         public Boolean IsActive { get; set;} = true;
-        public ICollection<Cart> Carts { get; set;}
+        public virtual Cart Carts { get; set;}
     }
 }

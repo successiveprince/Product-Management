@@ -20,7 +20,8 @@ namespace Product_Management.Models.Domain
         public bool IsActive { get; set; }
         public DateTime ProductCreatedAt { get; set; }
         public int ProductCategoryId { get; set; }
-        public ICollection<Cart> Cart { get; set; }
+
+        public virtual Cart Cart { get; set; }
         public Category Category { get; set; }
     }
 }

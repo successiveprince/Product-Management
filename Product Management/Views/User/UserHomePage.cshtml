@@ -23,6 +23,21 @@
                 
                 padding: 20px;
             }
+
+        #searchInputContainer {
+            position: fixed;
+            top: 10%;
+            /* left: 20%; */
+            width: 57.65%;
+            z-index: 1000; 
+            background-color: #fff;
+            padding: 10px; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #searchInput {
+            width: 100%; /* Ensure the input takes up the full width of the container */
+        }
         </style>
      </head>
     <body>
@@ -35,15 +50,14 @@
             <label for="categoryFilter" class="form-label">Category:</label>
             <select id="categoryFilter" class="form-select">
                 <option value="all">All</option>
-                <option value="fashion">Fashion</option>
-                <option value="electronic">Electronic</option>
-                <option value="mobile">Mobile</option>
-                <option value="beauty">Beauty</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Electronic">Electronic</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Beauty">Beauty</option>
             </select>
         </div>
-        <button onclick="applyFilterCategory()" class="btn btn-primary">Apply Filters</button>
-        <br />
-        <br />
+       @*  <button onclick="applyFilterCategory()" class="btn btn-primary">Apply Filters</button> *@
+        
         <!-- Price Filter -->
         <div class="mb-3">
             <label for="priceFilter" class="form-label">Price Range:</label>
@@ -57,6 +71,15 @@
         </div>
 
         <button onclick="applyFilters()" class="btn btn-primary">Apply Filters</button>
+        <br />
+        <hr />
+        <div style="width: 200px; margin-top: 5%;">
+            <a href="" class="btn btn-primary btn-block">Favourite Products</a>
+            <br />
+            <br />
+            <a href="/Cart/MyCarts" class="btn btn-primary btn-block">My Cart</a>
+        </div>
+
     </div>
 
         <div class="main-content">  
@@ -64,15 +87,18 @@
             @if(Model != null)
             {
             <div class="container py-3">
-                <input style="margin-top:8%;" type="text" id="searchInput" class="form-control" placeholder="Search Your Product" oninput="applySearch()" />
-
-                <div class="row" style="margin-top:5%;">
+                <div id="searchInputContainer">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search Your Product" oninput="applySearch()" />
+                </div>
+                
+                <div class="row" style="margin-top:13%;">
+                    <h2>Trending Products</h2>
                     <hr />
                     @foreach (var item in Model.OrderByDescending(x=> x.IsTrending))
                     {
-                        if (item.IsAvailable)
+                        if (item.IsAvailable && item.IsTrending)
                         {
-                            <div class="col-md-4 mb-4" data-category="@item.CategoryName" data-price="@item.ProductPrice">
+                            <div class="col-md-4 mb-4">
                                 <section style="background-color: #eee;">
                                     <div class="card">
                                         <div class="d-flex justify-content-between p-3">
@@ -113,8 +139,68 @@
                                                 <h5 class="text-dark mb-0">Rs @item.ProductPrice</h5>
                                             </div>
 
-                                            <div class="d-flex justify-content-end">
-                                                <button class="btn btn-primary">Add to Cart</button>
+                                            <div class="d-flex justify-content-between">
+                                                <a href="" class="btn btn-primary">Add to Favourite</a>
+                                                <a href="" class="btn btn-primary">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="row" style="margin-top:5%;">
+                    <h2>Collections</h2>
+                    <hr />
+                    @foreach (var item in Model)
+                    {
+                        if (item.IsAvailable)
+                        {
+                            <div class="col-md-4 mb-4 productCard" data-category="@item.CategoryName" data-price="@item.ProductPrice">
+                                <section style="background-color: #eee;">
+                                    <div class="card">
+                                        <div class="d-flex justify-content-between p-3">
+                                            <p class="lead mb-0">@item.ProductName</p>
+                                            @if (item.IsTrending)
+                                            {
+                                                @* <div class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                                                     style="width: 65px; height: 35px;">
+                                                    <p class="text-white mb-0 small">Trending</p>
+                                                </div> *@
+                                            }
+                                        </div>
+                                        <img src="~/image/@item.ProductImage" alt="Product Image" class="card-img-top" width="50px" height="360px" />
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <p class="small">@item.CategoryName</p>
+                                                @if (item.ProductPrice > 500 && @item.ProductPrice < 1000)
+                                                {
+                                                    <p class="small text-dark"><s>Rs @(item.ProductPrice + 300)</s></p>
+                                                }
+                                                else if(@item.ProductPrice >= 1000 && @item.ProductPrice < 2000)
+                                                {
+                                                    <p class="small text-dark"><s>Rs @(item.ProductPrice + 800)</s></p>
+                                                }
+                                                else if (item.ProductPrice > 5000)
+                                                {
+                                                    <p class="small text-dark"><s>Rs @(item.ProductPrice + 4000)</s></p>
+                                                }
+                                                else
+                                                {
+                                                    <p class="small text-dark"><s>Rs @(item.ProductPrice + 200)</s></p>
+                                                }
+
+                                            </div>
+
+                                            <div class="d-flex justify-content-between mb-3">
+                                                <h5 class="mb-0">@item.ProductName</h5>
+                                                <h5 class="text-dark mb-0">Rs @item.ProductPrice</h5>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between">
+                                                <a href="" class="btn btn-primary">Add to Favourite</a>
+                                                <a href="/Cart/AddToCart/@item.ProductId" class="btn btn-primary">Add to Cart</a>
                                             </div>
                                         </div>
                                     </div>
@@ -127,37 +213,62 @@
             }
     </div>
     <script>
-        function applyFilterCategory() {
-            var selectedCategory = document.getElementById("categoryFilter").value;
+        // function applyFilterCategory() {
+        //     var selectedCategory = document.getElementById("categoryFilter").value;
 
-            var items = document.querySelectorAll('.col-md-4[data-category]');
-            items.forEach(function (item) {
-                var category = item.getAttribute('data-category');
-                console.log(category);
-                var categoryFilter = selectedCategory === 'all' || category === selectedCategory;
+        //     var items = document.querySelectorAll('.col-md-4');
+        //     items.forEach(function (item) {
+        //         var category = item.getAttribute('data-category');
+               
+        //         var categoryFilter = selectedCategory === 'all' || selectedCategory === category;
 
-                if (categoryFilter) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
+        //         if (categoryFilter) {
+        //             item.style.display = 'block';
+        //         } else {
+        //             item.style.display = 'none';
+        //         }
+        //     });
+        // }
 
+        // function applyFiltersPrice() {
+        //     var selectedPriceRange = document.getElementById("priceFilter").value;
+
+        //     var items = document.querySelectorAll('.col-md-4[data-price]');
+        //     items.forEach(function (item) {
+        //         var price = parseFloat(item.getAttribute('data-price'));
+
+        //         var priceFilter = selectedPriceRange === 'all' ||
+        //             (selectedPriceRange === '100-500' && price >= 100 && price <= 500) ||
+        //             (selectedPriceRange === '501-1500' && price >= 501 && price <= 1500) ||
+        //             (selectedPriceRange === '1501-5000' && price >= 1501 && price <= 5000) ||
+        //             (selectedPriceRange === '5000+' && price > 5000);
+
+        //         if (priceFilter) {
+        //             item.style.display = 'block';
+        //         } else {
+        //             item.style.display = 'none';
+        //         }
+        //     });
+        // }
         function applyFilters() {
+            var selectedCategory = document.getElementById("categoryFilter").value;
             var selectedPriceRange = document.getElementById("priceFilter").value;
 
-            var items = document.querySelectorAll('.col-md-4[data-price]');
+            var items = document.querySelectorAll('.productCard');
             items.forEach(function (item) {
+                var category = item.getAttribute('data-category');
                 var price = parseFloat(item.getAttribute('data-price'));
 
+                var categoryFilter = selectedCategory === 'all' || selectedCategory === category;
                 var priceFilter = selectedPriceRange === 'all' ||
                     (selectedPriceRange === '100-500' && price >= 100 && price <= 500) ||
                     (selectedPriceRange === '501-1500' && price >= 501 && price <= 1500) ||
                     (selectedPriceRange === '1501-5000' && price >= 1501 && price <= 5000) ||
                     (selectedPriceRange === '5000+' && price > 5000);
 
-                if (priceFilter) {
+                var isVisible = categoryFilter && priceFilter;
+
+                if (isVisible) {
                     item.style.display = 'block';
                 } else {
                     item.style.display = 'none';

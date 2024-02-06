@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Product_Management.Data;
+using Product_Management.Models.Domain;
 using Product_Management.Models.Dto;
 
 namespace Product_Management.Controllers
@@ -12,9 +14,14 @@ namespace Product_Management.Controllers
     public class AdminController : Controller
     {
         private readonly ProductDbContext _context;
-        public AdminController(ProductDbContext context)
+        private readonly SignInManager<UserModel> _signInManager;
+        private readonly UserManager<UserModel> _userManager;
+
+        public AdminController(ProductDbContext context , SignInManager<UserModel> signInManager , UserManager<UserModel> userManager)
         {
             _context = context;
+            _signInManager = signInManager;
+            _userManager = userManager;
         }
        
         [HttpGet]
@@ -109,11 +116,27 @@ namespace Product_Management.Controllers
                 user.Name = updateUserDto.Name;
                 user.PhoneNo = updateUserDto.PhoneNo;
                 user.Email = updateUserDto.Email;
-                user.UserPassword = updateUserDto.UserPassword;
                 user.CreatedAt = DateTime.UtcNow;
                 user.IsActive = updateUserDto.IsActive;
+
+                if (!string.IsNullOrEmpty(updateUserDto.UserPassword))
+                {
+
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                    var resetPasswordResult = await _userManager.ResetPasswordAsync(user, token, updateUserDto.UserPassword);
+
+                    if (!resetPasswordResult.Succeeded)
+                    {
+                        ModelState.AddModelError("", "Failed to reset the password.");
+                        return View(updateUserDto);
+                    }
+                    user.UserPassword = updateUserDto.UserPassword;
+                    user.ConfirmPassword = updateUserDto.UserPassword;
+                }
+                await _context.SaveChangesAsync();
+                return RedirectToAction("GetAllUser", "Auth");
             }
-            await _context.SaveChangesAsync();
             return RedirectToAction("GetAllUser", "Auth");
         }
 

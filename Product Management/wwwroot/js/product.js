@@ -27,6 +27,21 @@ function loadDataTable() {
                     return moment(data).format('DD-MM-YYYY HH:mm:ss');
                 }
             },
+            //{
+            //    data: 'productImage',
+            //    width: '15%',
+            //    render: function (data, type, row) {
+                   
+            //        if (type === 'display') {
+
+            //            return `<img src="/image/${data}" class="btn btn-warning mx-2" />`
+            //                ;
+            //        }
+
+            //        // For other types, return the raw data
+            //        return data;
+            //    }
+            //},
             {
                 data: 'productId',
                 render: function (data, type, row) {
@@ -98,7 +113,20 @@ function loadDataTable() {
             console.log('Applying category filter:', selectedCategory);
             dataTable.column(5).search(selectedCategory).draw(); 
         }
+        $.ajax({
+            url: '/Home/Privacy',
+            type: 'POST',
+            data: { myData: selectedCategory },
+            success: function (data) {
+                sessionStorage.setItem('TheCategory', selectedCategory)
+                console.log(data.success)
+            },
+            error: function () {
+                alert("error");
+            }
+        });
     });
 
+    
 
 }
