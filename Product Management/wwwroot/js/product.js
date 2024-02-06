@@ -104,7 +104,7 @@ function loadDataTable() {
     $('#FilterByCategory').on('change', function () {
         console.log('Change event triggered');
         var selectedCategory = $(this).val();
-
+        alert(selectedCategory);
        
         dataTable.search('').columns().search('').draw();
 

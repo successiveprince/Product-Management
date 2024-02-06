@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Product_Management.Data;
 using Product_Management.Models.Domain;
@@ -7,6 +8,7 @@ using System;
 
 namespace Product_Management.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
         private readonly ProductDbContext _productDbContext;
@@ -125,9 +127,17 @@ namespace Product_Management.Controllers
             if (updateProductDto.ProductImage != null)
             {
                 string uploadFoler = Path.Combine(_webHostEnvironment.WebRootPath, "image");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + updateProductDto.ProductImage.FileName;
+                if (!string.IsNullOrEmpty(product.ProductImage))
+                {
+                    string previousImagePath = Path.Combine(uploadFoler, product.ProductImage);
+                    if (System.IO.File.Exists(previousImagePath))
+                    {
+                        System.IO.File.Delete(previousImagePath);
+                    }
+                }
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + updateProductDto.MyProductImage;
                 string filePath = Path.Combine(uploadFoler, uniqueFileName);
-                updateProductDto.ProductImage.CopyTo(new FileStream(filePath, FileMode.Create));
+                //updateProductDto.MyProductImage.CopyTo(new FileStream(filePath, FileMode.Create));
             }
 
             if (product != null)
@@ -135,8 +145,11 @@ namespace Product_Management.Controllers
                 product.ProductName = updateProductDto.ProductName;
                 product.ProductPrice = updateProductDto.ProductPrice;
                 product.ProductDescription = updateProductDto.ProductDescription;
-                product.ProductImage = uniqueFileName;
-               
+                //if (UpdateProductDto.MyProductImage != null)
+                {
+                    product.ProductImage = uniqueFileName;
+                }
+
                 product.IsTrending = updateProductDto.IsTrending;
                 product.ProductCategoryId = updateProductDto.ProductCategoryId;
             }

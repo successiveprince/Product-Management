@@ -13,10 +13,11 @@ namespace Product_Management.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Cart> Carts { get; set; }
-
+        public DbSet<FavouriteModel> Favourites { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+           
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new CartConfiguration());

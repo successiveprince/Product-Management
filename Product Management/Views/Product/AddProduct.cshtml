@@ -3,8 +3,8 @@
 
 @{
     ViewData["Title"] = "AddProduct";
-    var categoryList = ViewBag.CategoryList as List<Product_Management.Models.Domain.Category>;
     var MyCategoryId = TempData["CategoryId"];
+    var categoryList = ViewBag.CategoryList as List<Product_Management.Models.Domain.Category>;
 }
 
 <!DOCTYPE html>
@@ -65,12 +65,17 @@
                                         foreach (var x in categoryList)
                                         {
                                             @*<option value="@x.CategoryId" selected="@(x.CategoryId == ViewBag.SelectedCategory)">@x.CategoryName</option> *@
-                                            @if (x.CategoryId == Convert.ToInt32(MyCategoryId))
+                                            @if(Convert.ToInt32(MyCategoryId) == 0)
+                                            {
+                                                <option value="@x.CategoryId">@x.CategoryName</option>
+                                            }
+
+                                            else if (x.CategoryId == Convert.ToInt32(MyCategoryId))
                                             {
                                                 <option value="@x.CategoryId" selected>@x.CategoryName</option>
                                             }
                                            
-                                            else
+                                            else 
                                             {
                                                 <option value="@x.CategoryId">@x.CategoryName</option>
                                             }

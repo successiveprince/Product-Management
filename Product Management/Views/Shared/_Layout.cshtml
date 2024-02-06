@@ -34,25 +34,35 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav me-auto">
-                            @if (User.IsInRole("Admin"))
-                            {
-                                <li class="nav-item fontsytle">
-                                    <a class="nav-link fs-5 fontsytle" href="/Admin/AdminHome" style="color:white"><b>Admin Dashboard</b></a>
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="nav-item fontsytle" style="font-size:35px;">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item fontsytle">
+                                                <a class="nav-link fs-5 fontsytle" href="/Admin/AdminHome" style="color:white"><b>Admin Dashboard</b></a>
+                                            </li>
+                                        </ul>
+                                    }
+                                    else
+                                    {
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item fontsytle" style="font-size:35px;">
+                                                <a class="nav-link fontsytle" href="/User/UserHomePage" style="color:white;"><b>Trendy Treasures</b></a>
+                                            </li>
+                                        </ul>
+                                    }
+                                </div>
 
-                                    <a class="nav-link fontsytle" href="/User/UserHomePage" style="color:white;"><b>Trendy Treasures</b></a>
-                                </li>
-                            }
-                        </ul>
+                               
+                            </div>
+                        </div>
+
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="fst-italic fs-5" ><b>Hi,</b></span> <span class="fs-5 fw-bold" style="color:white"> @User.Identity!.Name</span>
+                                    <span class="fst-italic fs-5"><b>Hi,</b></span> <span class="fs-5 fw-bold" style="color:white"> @User.Identity!.Name</span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li>
@@ -69,6 +79,7 @@
                             </li>
                         </ul>
                     </div>
+
                 </div>
             </nav>
 
@@ -95,6 +106,11 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+    <script>
+        if (performance.navigation.type == 2) {
+            location.reload();
+        }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

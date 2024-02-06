@@ -24,6 +24,10 @@ namespace Product_Management.Controllers
 
         public IActionResult Privacy(string myData)
         {
+            if(myData == "all") 
+            {
+                return Json(new { result = "success" });
+            }
             int categoryId = _context.Categories.FirstOrDefault(x => x.CategoryName == myData).CategoryId;
             TempData["CategoryId"] = categoryId;
             return Json(new { result = "success" });
