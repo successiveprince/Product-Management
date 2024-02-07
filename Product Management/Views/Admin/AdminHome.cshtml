@@ -23,6 +23,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>Admin Dashboard</title>
+    <!-- Toaster -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
     <style>
         .form-control-primary {
             margin: 10px;
@@ -102,12 +105,15 @@
             color: #fff; /* Text color when checked */
         }
 
+        .toast-position {
+            top: 8rem !important;
+        }
         
     </style>
 </head>
 
 <body>
-   
+   <partial name="Notification" />
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->

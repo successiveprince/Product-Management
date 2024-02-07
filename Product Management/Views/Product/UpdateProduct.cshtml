@@ -1,4 +1,4 @@
-﻿@model Product_Management.Models.Dto.UpdateProductDto;
+﻿@model Product_Management.Models.Domain.Product;
 
 @{
     ViewData["Title"] = "Update Product";
@@ -47,9 +47,13 @@
         </div>
         <div class="mb-3">
             <label for="ProductImage" class="form-label">Product Image</label>
-            <input asp-for="ProductImage" class="form-control" type="file" placeholder="Product Image" required />
+            <input asp-for="ProductImage" class="form-control" id="ChooseImage" type="file" placeholder="Product Image" required />
            
             <span asp-validation-for="ProductImage" class="text-danger"></span>
+        
+            <div class="col-4">
+                <img src ="~/image/@Model.ProductImage" id="PreviewImage" class="mt-1" style="width:200px; height:200px; border:1px solid black; border-radius:10px; padding:10px" alt="Preview Image" />
+            </div>
         </div>
         @* <div class="mb-3 form-check">
             <input asp-for="IsAvailable" type="checkbox" class="form-check-input" id="IsAvailable" />
@@ -64,4 +68,23 @@
         
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
+
+    <script>
+        $(document).ready(function () {
+            $('#ChooseImage').change(function (e) {
+                var url = $('#ChooseImage').val();
+                var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+                if ($('#ChooseImage')[0].files && $('#ChooseImage')[0].files[0] && (ext == "gif" || ext == "jpg" || ext == "jfif" || ext == "png" || ext == "bmp")) {
+                    var reader = new FileReader();
+                    reader.onload = function () {
+                        var output = document.getElementById('PreviewImage');
+                        output.src = reader.result;
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+        });
+</script>
+
+
 

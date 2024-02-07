@@ -45,6 +45,17 @@ namespace Product_Management.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model)
         {
+            var user = _userManager.Users.FirstOrDefault(x => x.Email == model.UserEmail);
+            if(user == null)
+            {
+                TempData["deactiveLogin"] = "Invalid User!";
+                return RedirectToAction("Login", "Auth");
+            }
+            if (user.IsActive == false && user.Email.Contains("admin") == false)
+            {
+                TempData["deactiveLogin"] = "Your account has been deactivated by the admin!";
+                return RedirectToAction("Login", "Auth");
+            }
             if (ModelState.IsValid)
             {
 

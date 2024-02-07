@@ -100,7 +100,7 @@ namespace Product_Management.Controllers
             ViewBag.CategoryList = await _productDbContext.Categories.ToListAsync();
             if (product != null)
             {
-                var newProduct = new UpdateProductDto()
+                var newProduct = new Product()
                 {
                     ProductId = product.ProductId,
                     ProductName = product.ProductName,
@@ -109,7 +109,9 @@ namespace Product_Management.Controllers
                     IsAvailable = product.IsAvailable,
                     IsTrending = product.IsTrending,
                     ProductCategoryId = product.ProductCategoryId,
-                    Category = product.Category
+                    Category = product.Category,
+                    ProductImage = product.ProductImage,
+                    
                  
                 };
                 return await Task.Run(() => View("UpdateProduct", newProduct));
@@ -118,13 +120,13 @@ namespace Product_Management.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(UpdateProductDto updateProductDto)
+        public async Task<IActionResult> Update(Product productModel)
         {
-            var product = await _productDbContext.Products.FirstOrDefaultAsync(x => x.ProductId == updateProductDto.ProductId);
+            var product = await _productDbContext.Products.FirstOrDefaultAsync(x => x.ProductId == productModel.ProductId);
             ViewBag.CaterogyList = _productDbContext.Categories.ToList();
 
             string uniqueFileName = "";
-            if (updateProductDto.ProductImage != null)
+            if (productModel.ProductUploadImage != null)
             {
                 string uploadFoler = Path.Combine(_webHostEnvironment.WebRootPath, "image");
                 if (!string.IsNullOrEmpty(product.ProductImage))
@@ -135,25 +137,27 @@ namespace Product_Management.Controllers
                         System.IO.File.Delete(previousImagePath);
                     }
                 }
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + updateProductDto.MyProductImage;
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + productModel.ProductUploadImage.FileName;
                 string filePath = Path.Combine(uploadFoler, uniqueFileName);
                 //updateProductDto.MyProductImage.CopyTo(new FileStream(filePath, FileMode.Create));
+                productModel.ProductUploadImage.CopyTo(new FileStream(filePath, FileMode.Create));
             }
 
             if (product != null)
             {
-                product.ProductName = updateProductDto.ProductName;
-                product.ProductPrice = updateProductDto.ProductPrice;
-                product.ProductDescription = updateProductDto.ProductDescription;
-                //if (UpdateProductDto.MyProductImage != null)
+                product.ProductName = productModel.ProductName;
+                product.ProductPrice = productModel.ProductPrice;
+                product.ProductDescription = productModel.ProductDescription;
+                if (productModel.ProductUploadImage != null)
                 {
                     product.ProductImage = uniqueFileName;
                 }
 
-                product.IsTrending = updateProductDto.IsTrending;
-                product.ProductCategoryId = updateProductDto.ProductCategoryId;
+                product.IsTrending = productModel.IsTrending;
+                product.ProductCategoryId = productModel.ProductCategoryId;
             }
             await _productDbContext.SaveChangesAsync();
+            TempData["productSuccess"] = "Product Updated Successfully";
             return RedirectToAction("AdminHome", "Admin");
         }
 

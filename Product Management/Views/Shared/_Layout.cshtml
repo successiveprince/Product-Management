@@ -13,13 +13,25 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Product_Management.styles.css"/>
+    <!-- Toaster -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <!-- Toastr CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <style>
         nav{
             background-color: #39b8a5;
             color:black;
         }
-       
+
+        .toast-position {
+            top: 8rem !important;
+        }
     </style>
 
 </head>
@@ -70,11 +82,11 @@
                                             Logout
                                         </a>
                                     </li>
-                                    <li>
+                                   @*  <li>
                                         <a class="dropdown-item" asp-action="ViewProfile" asp-controller="Admin">
                                             Profile
                                         </a>
-                                    </li>
+                                    </li> *@
                                 </ul>
                             </li>
                         </ul>
@@ -87,7 +99,30 @@
 
 
         }
-        
+        else
+        {
+            <nav class="mynav navbar navbar-expand-lg fixed-top">
+                <div class="container-fluid">
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto d-flex">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Auth/Login"  aria-expanded="false">
+                                    <span class="fs-5 fw-bold" style="color:white">Login</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Auth/Register"  aria-expanded="false">
+                                    <span class="fs-5 fw-bold" style="color:white">Register</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+        }
+
     </ul>
 
     <div class="container">

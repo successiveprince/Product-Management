@@ -69,7 +69,8 @@ function loadDataTable() {
 
 
         ],
-        "order": [[4, 'desc']]
+        "order": [6, 'desc']
+       
     });
     
 
@@ -104,7 +105,7 @@ function loadDataTable() {
     $('#FilterByCategory').on('change', function () {
         console.log('Change event triggered');
         var selectedCategory = $(this).val();
-        alert(selectedCategory);
+       /* alert(selectedCategory);*/
        
         dataTable.search('').columns().search('').draw();
 

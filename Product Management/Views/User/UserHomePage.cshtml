@@ -1,5 +1,7 @@
-﻿    @model List<Product_Management.Models.Dto.CategoryProductDto>
-
+﻿@using Microsoft.AspNetCore.Identity
+@using Product_Management.Models.Domain
+@model List<Product_Management.Models.Dto.CategoryProductDto>
+@inject SignInManager<UserModel> signInManager;
 
 
     <html>
@@ -90,19 +92,24 @@
             <br />
             <a href="/Cart/MyCarts" class="btn btn-primary btn-block">My Cart</a>
         </div> *@
-        <div class="col-md-6 text-start mt-3">
-            <ul class="navbar-nav">
-                <li class="nav-item fontsytle" style="font-size:20px;">
-                    <a class="nav-link fontsytle" href="/Cart/MyCarts" style="color:#39b8a5;"><i class="fas fa-shopping-cart" style='color:grey'></i><b> Cart</b></a>
-                </li>
-                <li class="nav-item fontsytle" style="font-size:20px;">
-                    <a class="nav-link fontsytle" href="/Favourite/Index" style="color:#39b8a5;"><i class="fa fa-heart" style='color:red'></i><b> Favourites</b></a>
-                </li>
-                <li class="nav-item fontsytle" style="font-size:20px;">
-                    <a class="nav-link fontsytle" href="#" style="color:#39b8a5;"><i class='fas fa-fire-alt' style='color:darkorange'></i><b> Trending</b></a>
-                </li>
-            </ul>
-        </div>
+        @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+        {
+            <div class="col-md-6 text-start mt-3">
+                <ul class="navbar-nav">
+                    <li class="nav-item fontsytle" style="font-size:20px;">
+                        <a class="nav-link fontsytle" href="/Cart/MyCarts" style="color:#39b8a5;"><i class="fas fa-shopping-cart" style='color:grey'></i><b> Cart</b></a>
+                    </li>
+                    <li class="nav-item fontsytle" style="font-size:20px;">
+                        <a class="nav-link fontsytle" href="/Favourite/Index" style="color:#39b8a5;"><i class="fa fa-heart" style='color:red'></i><b> Favourites</b></a>
+                    </li>
+                    <li class="nav-item fontsytle" style="font-size:20px;">
+                        <a class="nav-link fontsytle" href="#" style="color:#39b8a5;"><i class='fas fa-fire-alt' style='color:darkorange'></i><b> Trending</b></a>
+                    </li>
+                </ul>
+            </div>
+           
+        }
+        
 
     </div>
 
@@ -127,6 +134,14 @@
                                     <div class="card">
                                         <div class="d-flex justify-content-between p-3">
                                             <p class="lead mb-0">@item.ProductName</p>
+                                            @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+                                            {
+                                                <div class="justify-content-center" style="width: 65px; height: 35px;">
+                                                    <a href="/Favourite/AddToFavourite/@item.ProductId" class="btn">
+                                                        <i class="fa fa-heart" id="heart" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            }
                                             @if (item.IsTrending)
                                             {
                                                 <div class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
@@ -163,10 +178,13 @@
                                                 <h5 class="text-dark mb-0">Rs @item.ProductPrice</h5>
                                             </div>
 
-                                            <div class="d-flex justify-content-between">
-                                                @*  <a href="/Favourite/AddToFavourite/@item.ProductId" class="btn btn-primary">Add to Favourite</a> *@
-                                                <a href="/Cart/AddToCart/@item.ProductId" class="btn btn-primary">Add to Cart</a>
-                                            </div>
+                                            @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+                                            {
+                                                <div class="d-flex justify-content-between">
+                                                    @*  <a href="/Favourite/AddToFavourite/@item.ProductId" class="btn btn-primary">Add to Favourite</a> *@
+                                                    <a href="/Cart/AddToCart/@item.ProductId" class="btn btn-primary">Add to Cart</a>
+                                                </div>
+                                            }
                                         </div>
                                     </div>
                                 </section>
@@ -174,7 +192,7 @@
                         }
                     }
                 </div>
-                <div class="row" style="margin-top:5%;">
+                <div class="row" id="collections" style="margin-top:5%;">
                     <h2>Collections</h2>
                     <hr />
                     @foreach (var item in Model)
@@ -186,13 +204,16 @@
                                     <div class="card">
                                         <div class="d-flex justify-content-between p-3">
                                             <p class="lead mb-0">@item.ProductName</p>
-                                           
-                                            
+
+                                            @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+                                            {
                                                 <div class="justify-content-center" style="width: 65px; height: 35px;">
                                                     <a href="/Favourite/AddToFavourite/@item.ProductId" class="btn">
                                                         <i class="fa fa-heart" id="heart" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
+                                            }
+                                                
                                             @if (item.IsTrending)
                                             {
                                                 <div class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
@@ -229,11 +250,14 @@
                                                 <h5 class="mb-0">@item.ProductName</h5>
                                                 <h5 class="text-dark mb-0">Rs @item.ProductPrice</h5>
                                             </div>
-
-                                            <div class="d-flex justify-content-between">
-                                               @*  <a href="/Favourite/AddToFavourite/@item.ProductId" class="btn btn-primary">Add to Favourite</a> *@
-                                                <a href="/Cart/AddToCart/@item.ProductId" class="btn btn-primary">Add to Cart</a>
-                                            </div>
+                                            @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+                                            {
+                                                <div class="d-flex justify-content-between">
+                                                    @*  <a href="/Favourite/AddToFavourite/@item.ProductId" class="btn btn-primary">Add to Favourite</a> *@
+                                                    <a href="/Cart/AddToCart/@item.ProductId" class="btn btn-primary">Add to Cart</a>
+                                                </div>
+                                            }
+                                           
                                         </div>
                                     </div>
                                 </section>
@@ -307,6 +331,10 @@
                 }
             });
             applySearch();
+            var collectionsSection = document.getElementById('collections');
+            if (collectionsSection) {
+                collectionsSection.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+            }
         }
         function applySearch() {
             var searchInput = document.getElementById("searchInput");
@@ -327,6 +355,10 @@
         }
         var searchInput = document.getElementById("searchInput");
         searchInput.addEventListener('input', applyFilters);
+        var collectionsSection = document.getElementById('collections');
+        if (collectionsSection) {
+            collectionsSection.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+        }
     </script>
    
     </body>

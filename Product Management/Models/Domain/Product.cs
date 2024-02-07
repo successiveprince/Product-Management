@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Product_Management.Models.Domain
 {
@@ -11,6 +12,9 @@ namespace Product_Management.Models.Domain
         public string ProductDescription { get; set; }
        
         public float ProductPrice { get; set; }
+
+        [NotMapped]
+        public IFormFile ProductUploadImage { get; set; }
         public string ProductImage { get; set; }
 
         [DefaultValue(true)]

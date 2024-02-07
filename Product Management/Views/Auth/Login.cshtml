@@ -5,6 +5,7 @@
 }
 @model Product_Management.Models.Dto.LoginModel;
 
+<partial name="Notification" />
 <section class="vh-100" style="background-color: #fff;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -30,13 +31,13 @@
                                     <div class="form-outline mb-4">
                                         <input type="email" id="form2Example17" class="form-control form-control-lg" asp-for="UserEmail" required />
                                         <label class="form-label" for="form2Example17">Email address</label>
-                                        @* <span asp-validation-for="UserEmail" class="text-danger"></span> *@
+                                        <span asp-validation-for="UserEmail" class="text-danger"></span> 
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <input type="password" id="form2Example27" class="form-control form-control-lg" asp-for="UserPassword" required />
                                         <label class="form-label" for="form2Example27">Password</label>
-                                        @* <span asp-validation-for="UserPassword" class="text-danger"></span> *@
+                                        <span asp-validation-for="UserPassword" class="text-danger"></span>
                                         <div class="password-toggle">
                                             <input type="checkbox" onclick="togglePasswordVisibility()" id="showPassword" />
                                             <label for="showPassword">View Password</label>
