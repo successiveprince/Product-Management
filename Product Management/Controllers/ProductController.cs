@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Product_Management.Data;
@@ -19,7 +20,7 @@ namespace Product_Management.Controllers
             _productDbContext = productDbContext;
             _webHostEnvironment = webHostEnvironment;
         }
-        
+        //Not using this GetAllProducts
         [HttpGet]
         public async Task<IActionResult> GetAllProduct()
         {
@@ -110,8 +111,7 @@ namespace Product_Management.Controllers
                     IsTrending = product.IsTrending,
                     ProductCategoryId = product.ProductCategoryId,
                     Category = product.Category,
-                    ProductImage = product.ProductImage,
-                    
+                    ProductImage = product.ProductImage
                  
                 };
                 return await Task.Run(() => View("UpdateProduct", newProduct));
@@ -119,14 +119,32 @@ namespace Product_Management.Controllers
             return RedirectToAction("AdminHome" , "Admin");
         }
 
+
+        private string UploadImage(UpdateProductDto model)
+        {
+            string uniqueFileName = string.Empty;
+            if (model.ProductImage != null)
+            {
+                string uploadFolder = Path.Combine(_webHostEnvironment.WebRootPath, "image");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProductImage.FileName;
+                string FilePath = Path.Combine(uploadFolder, uniqueFileName);
+                using (var fileStream = new FileStream(FilePath, FileMode.Create))
+                {
+                    model.ProductImage.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
+        }
+
+
         [HttpPost]
-        public async Task<IActionResult> Update(Product productModel)
+        public async Task<IActionResult> Update(UpdateProductDto productModel)
         {
             var product = await _productDbContext.Products.FirstOrDefaultAsync(x => x.ProductId == productModel.ProductId);
             ViewBag.CaterogyList = _productDbContext.Categories.ToList();
 
             string uniqueFileName = "";
-            if (productModel.ProductUploadImage != null)
+            if (productModel.ProductImage != null)
             {
                 string uploadFoler = Path.Combine(_webHostEnvironment.WebRootPath, "image");
                 if (!string.IsNullOrEmpty(product.ProductImage))
@@ -137,10 +155,11 @@ namespace Product_Management.Controllers
                         System.IO.File.Delete(previousImagePath);
                     }
                 }
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + productModel.ProductUploadImage.FileName;
-                string filePath = Path.Combine(uploadFoler, uniqueFileName);
-                //updateProductDto.MyProductImage.CopyTo(new FileStream(filePath, FileMode.Create));
-                productModel.ProductUploadImage.CopyTo(new FileStream(filePath, FileMode.Create));
+                //uniqueFileName = Guid.NewGuid().ToString() + "_" + productModel.ProductImage.FileName;
+                //string filePath = Path.Combine(uploadFoler, uniqueFileName);
+                ////updateProductDto.MyProductImage.CopyTo(new FileStream(filePath, FileMode.Create));
+                //productModel.ProductImage.CopyTo(new FileStream(filePath, FileMode.Create));
+                uniqueFileName = UploadImage(productModel);
             }
 
             if (product != null)
@@ -148,7 +167,7 @@ namespace Product_Management.Controllers
                 product.ProductName = productModel.ProductName;
                 product.ProductPrice = productModel.ProductPrice;
                 product.ProductDescription = productModel.ProductDescription;
-                if (productModel.ProductUploadImage != null)
+                if (productModel.ProductImage != null)
                 {
                     product.ProductImage = uniqueFileName;
                 }

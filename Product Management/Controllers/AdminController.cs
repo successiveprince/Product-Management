@@ -141,9 +141,25 @@ namespace Product_Management.Controllers
         }
 
         [HttpGet]
-        public IActionResult ViewProfile()
+        public IActionResult ViewProfile(string id)
         {
-            return View();
+            var user = _context.Users.FirstOrDefault(x => x.Id == id);
+            if (user != null)
+            {
+                var profile = new UserModel
+                {
+                    Name = user.Name,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
+                    Role = user.Role
+                };
+                return View(profile);
+            }
+            else
+            {
+                return NotFound();
+            }
+           
         }
     }
 }

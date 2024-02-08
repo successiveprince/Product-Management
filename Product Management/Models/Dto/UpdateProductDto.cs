@@ -12,7 +12,7 @@ namespace Product_Management.Models.Dto
         public float ProductPrice { get; set; }
 
         public IFormFile ProductImage { get; set; }
-        public string MyProductImage {  get; set; }
+        public string ProductImagePath {  get; set; }
 
         public bool IsAvailable { get; set; }
 

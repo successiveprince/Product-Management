@@ -23,7 +23,8 @@ namespace Product_Management.Data
             {
                 UserName= "admin01@gmail.com",
                 Name = "Prince Kumar",
-                Email = "admin01@gmail.com",              
+                Email = "admin01@gmail.com", 
+                PhoneNo = "9837383292",
                 UserPassword = "pass@123",
                 ConfirmPassword = "pass@123",
                 Role="Admin",

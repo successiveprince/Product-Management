@@ -1,0 +1,151 @@
+﻿@model List<Product_Management.Models.Domain.Cart>
+@using Microsoft.AspNetCore.Identity
+@using Product_Management.Models.Domain;
+@inject SignInManager<UserModel> signInManager;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<html>
+    <head>
+        <style>
+        span {
+            cursor: pointer;
+        }
+
+        .minus a, .plus a {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #3498db;
+            border-radius: 50%;
+            border: 1px solid #2980b9;
+            color: #fff;
+            font-size: 20px;
+            line-height: 30px; /* Center text vertically */
+            text-align: center;
+            text-decoration: none; /* Remove underline from the link */
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .d-flex {
+            align-items: center;
+        }
+
+            .d-flex p {
+                margin: 0; /* Remove default margin for better alignment */
+            }
+
+        .btn-remove {
+            background-color: #e74c3c; /* Red color for remove button */
+            border-color: #c0392b; /* Slightly darker red for border */
+        }
+
+            .btn-remove:hover {
+                background-color: #c0392b; /* Darker red on hover */
+            }
+
+        .message-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff; /* Set your preferred background color */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+            
+        }
+
+        </style>
+    </head>
+    <body>
+    @if(!signInManager.IsSignedIn(User))
+    {
+        <div class="message-container" style="margin:20%;">
+            <h1 class="display-4">Please login to view your carts</h1>
+        </div>
+        return;
+    }
+
+   @*  <h1 style="margin-top:10%;">Welcome to your cart</h1> *@
+    <div class="row" style="margin-top:10%;">
+        <h2>My Cart</h2>
+        <hr />
+        @if (Model.Count == 0)
+        {
+            <div class="message-container">
+                <h1 class="display-4">No items in cart</h1>
+            </div>
+            return;
+        }
+        @foreach (var item in Model)
+        {           
+                <div class="col-md-4 mb-4">
+                    <section style="background-color: #eee;">
+                        <div class="card">
+                            <div class="d-flex justify-content-between p-3">
+                                <p class="lead mb-0">@item.Product.ProductName</p>
+                                
+                            </div>
+                            <img src="~/image/@item.Product.ProductImage" alt="Product Image" class="card-img-top" width="50px" height="360px" />
+                            <div class="card-body">
+                                
+
+                                <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">@item.Product.ProductName</h5>
+                                <h5 class="text-dark mb-0">Rs @(item.Product.ProductPrice * item.CartItems)</h5>
+                                </div>
+
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <span class="minus"><a href="/Cart/ReduceQuantity/@item.CartId">-</a></span>
+                                    <p><b>Quantity - @item.CartItems</b></p>
+                                    <span class="minus"><a href="/Cart/AddToCart/@item.ProductId">+</a></span>
+                                </div>
+                                <a href="/Cart/RemoveCart/@item.CartId" class="btn btn-remove remove"><b>Remove</b></a>
+                            </div>
+
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+         
+        }
+    </div>
+    @section Scripts {
+        <script src="~/js/ProductTable.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                // Add click event to the "Deactive" button
+                $('.remove').on('click', function (e) {
+                    e.preventDefault();
+
+                    // Get the product ID from the button's data-id attribute
+                    var productId = $(this).data('id');
+
+                    // Show SweetAlert2 confirmation dialog
+                    Swal.fire({
+                        title: "Are you sure to Remove it?",
+                        text: "You can't revert this!!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, Remove it!"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Perform the deactivation action
+                            window.location.href = $(this).attr('href');
+                        }
+                    });
+                });
+            });
+        </script>
+    }
+    </body>
+
+</html>

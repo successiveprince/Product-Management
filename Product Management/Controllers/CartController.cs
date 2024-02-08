@@ -39,8 +39,9 @@ namespace Product_Management.Controllers
 
                 if (id != null)
                 {
-                    var existingCart = _context.Carts.FirstOrDefault(x => x.ProductId == id);
                     var user = _signInManager.UserManager.GetUserId(User);
+                    var existingCart = _context.Carts.Where(x => x.UserId1 == user).FirstOrDefault(x => x.ProductId == id);
+                
 
 
                     if (existingCart != null)

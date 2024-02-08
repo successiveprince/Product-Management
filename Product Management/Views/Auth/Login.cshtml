@@ -47,6 +47,8 @@
                                     <div class="pt-1 mb-4">
                                         <button type="submit" class=" btn btn-outline-dark">Login</button>
                                     </div>
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
 
                                     <p class="mb-5 pb-lg-2" style="color: #393f81;">
                                         Don't have an account?
@@ -64,6 +66,15 @@
         </div>
     </div>
 </section>
+@section Scripts {
+    <script>
+        // Function to toggle password visibility
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById('form2Example27');
+            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+        }
+    </script>
+}
 <script>
     function togglePasswordVisibility() {
         var passwordInput = document.getElementById("form2Example27");

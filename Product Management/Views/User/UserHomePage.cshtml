@@ -92,7 +92,7 @@
             <br />
             <a href="/Cart/MyCarts" class="btn btn-primary btn-block">My Cart</a>
         </div> *@
-        @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+        @if ((signInManager.IsSignedIn(User) && User.IsInRole("User")) || !signInManager.IsSignedIn(User))
         {
             <div class="col-md-6 text-start mt-3">
                 <ul class="navbar-nav">
@@ -136,7 +136,12 @@
                                             <p class="lead mb-0">@item.ProductName</p>
                                             @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
                                             {
-                                                <div class="justify-content-center" style="width: 65px; height: 35px;">
+                                               @*  <div class="justify-content-center" style="width: 65px; height: 35px;">
+                                                    <a href="/Favourite/AddToFavourite/@item.ProductId" class="btn">
+                                                        <i class="fa fa-heart" id="heart" aria-hidden="true"></i>
+                                                    </a>
+                                                </div> *@
+                                                <div style="position: absolute;top: 15%; right: -5%%; z-index: 1; width: 65px; height: 35px;">
                                                     <a href="/Favourite/AddToFavourite/@item.ProductId" class="btn">
                                                         <i class="fa fa-heart" id="heart" aria-hidden="true"></i>
                                                     </a>
@@ -150,7 +155,7 @@
                                                 </div>
                                             }
                                         </div>
-                                        <img src="~/image/@item.ProductImage" alt="Product Image" class="card-img-top" width="50px" height="360px" />
+                                        <img src="~/image/@item.ProductImage" alt="Product Image"  class="card-img-top" width="50px" height="360px" />
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between">
                                                 <p class="small">@item.CategoryName</p>
@@ -178,7 +183,7 @@
                                                 <h5 class="text-dark mb-0">Rs @item.ProductPrice</h5>
                                             </div>
 
-                                            @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+                                            @if ((signInManager.IsSignedIn(User) && User.IsInRole("User")) || !signInManager.IsSignedIn(User))
                                             {
                                                 <div class="d-flex justify-content-between">
                                                     @*  <a href="/Favourite/AddToFavourite/@item.ProductId" class="btn btn-primary">Add to Favourite</a> *@
@@ -207,7 +212,7 @@
 
                                             @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
                                             {
-                                                <div class="justify-content-center" style="width: 65px; height: 35px;">
+                                                <div style="position: absolute;top: 15%; right: -5%%; z-index: 1; width: 65px; height: 35px;">
                                                     <a href="/Favourite/AddToFavourite/@item.ProductId" class="btn">
                                                         <i class="fa fa-heart" id="heart" aria-hidden="true"></i>
                                                     </a>
@@ -250,7 +255,7 @@
                                                 <h5 class="mb-0">@item.ProductName</h5>
                                                 <h5 class="text-dark mb-0">Rs @item.ProductPrice</h5>
                                             </div>
-                                            @if (signInManager.IsSignedIn(User) && User.IsInRole("User"))
+                                            @if ((signInManager.IsSignedIn(User) && User.IsInRole("User")) || !signInManager.IsSignedIn(User))
                                             {
                                                 <div class="d-flex justify-content-between">
                                                     @*  <a href="/Favourite/AddToFavourite/@item.ProductId" class="btn btn-primary">Add to Favourite</a> *@

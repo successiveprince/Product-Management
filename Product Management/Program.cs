@@ -53,7 +53,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Auth}/{action=Login}/{id?}");
+    pattern: "{controller=User}/{action=UserHomePage}/{id?}");
 
 using (var scope = app.Services.CreateScope())
 {

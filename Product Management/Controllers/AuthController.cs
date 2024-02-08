@@ -77,7 +77,7 @@ namespace Product_Management.Controllers
                         }
                     }
 
-                    ModelState.AddModelError("", "Invalid login attempt");
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt. Please check your password.");
                     return View(model);
                 }
                
@@ -138,7 +138,7 @@ namespace Product_Management.Controllers
         {
 
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Login");
+            return RedirectToAction("UserHomePage" , "User");
         }
 
         [HttpGet]

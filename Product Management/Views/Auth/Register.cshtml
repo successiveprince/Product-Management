@@ -139,46 +139,47 @@
 <body>
     <div class="container">
         <header class="row text-center">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         </header>
-        <main class="main row">
-            <div class="left col">
-                <img src="https://img.freepik.com/premium-vector/young-woman-enjoy-sitting-reading-book-hygge-concept-vector-illustration_194708-2078.jpg" alt="girl-reading-a-book" />
-            </div>
-            <div class="right col">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <form class="sign-up" method="post" asp-action="Register" asp-controller="Auth">
-                    <h4>Don't worry, You are secure here!</h4>
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter your name" asp-for="Name">
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email" asp-for="Email">
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="number" class="form-label">PhoneNo</label>
-                        <input type="number" class="form-control" id="number" placeholder="Enter your phone number" asp-for="PhoneNo">
-                        <span asp-validation-for="PhoneNo" class="text-danger"></span>
-                    </div>
+            <main class="main row" style="margin-top:10%;">
+                <div class="left col">
+                    <img src="https://img.freepik.com/premium-vector/young-woman-enjoy-sitting-reading-book-hygge-concept-vector-illustration_194708-2078.jpg" alt="girl-reading-a-book"style="width:100%;" />
+                </div>
+                <div class="right col">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <form class="sign-up" method="post" asp-action="Register" asp-controller="Auth">
+                        <h4>Don't worry, You are secure here!</h4>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name" asp-for="Name">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email" asp-for="Email">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="number" class="form-label">PhoneNo</label>
+                            <input type="number" class="form-control" id="number" placeholder="Enter your phone number" asp-for="PhoneNo">
+                            <span asp-validation-for="PhoneNo" class="text-danger"></span>
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Create a password" asp-for="UserPassword">
-                        <span asp-validation-for="UserPassword" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Your Password" asp-for="ConfirmPassword">
-                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                    </div>
-                    <button type="submit" class="btn submit-btn btn-outline-dark" asp-action="Register" asp-controller="Auth">Create account</button>
-                </form>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Create a password" asp-for="UserPassword">
+                            <span asp-validation-for="UserPassword" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Your Password" asp-for="ConfirmPassword">
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn submit-btn btn-outline-dark" asp-action="Register" asp-controller="Auth">Create account</button>
+                    </form>
 
-            </div>
-        </main>
+                </div>
+            </main>
     </div>
 
 </body>

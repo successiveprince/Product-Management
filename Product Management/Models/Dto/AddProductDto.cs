@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel;
 
 namespace Product_Management.Models.Dto
 {
@@ -9,6 +10,8 @@ namespace Product_Management.Models.Dto
 
         public float ProductPrice { get; set; }
         public IFormFile? ProductImage { get; set; }
+        [ValidateNever]
+        public string ProductImagePath { get; set; }
 
         [DefaultValue(true)]
         public bool IsAvailable { get; set; }

@@ -15,23 +15,23 @@ function loadDataTable() {
             { data: 'productName', "width": "15%" },
             { data: 'productDescription', "width": "15%" },
             { data: 'productPrice', "width": "15%" },
-           /* { data: 'productImage', "width": "15%" },*/ 
-            { data: 'isAvailable', "width": "15%" } , 
-            /*{ data: 'isActive', "width": "15%" },*/     
-            
+            /* { data: 'productImage', "width": "15%" },*/
+            { data: 'isAvailable', "width": "15%" },
+            /*{ data: 'isActive', "width": "15%" },*/
+
             { data: 'isTrending', "width": "15%" },
             { data: 'categoryName', "width": "15%" },
             {
                 data: 'productCreatedAt', "width": "15%", render: function (data, type, row) {
                     // Format the date using Moment.js
-                    return moment(data).format('DD-MM-YYYY HH:mm:ss');
+                    return moment(data).format('YYYY-MM-DD');
                 }
             },
             //{
             //    data: 'productImage',
             //    width: '15%',
             //    render: function (data, type, row) {
-                   
+
             //        if (type === 'display') {
 
             //            return `<img src="/image/${data}" class="btn btn-warning mx-2" />`
@@ -45,7 +45,7 @@ function loadDataTable() {
             {
                 data: 'productId',
                 render: function (data, type, row) {
-                    var productId = row.productId; 
+                    var productId = row.productId;
                     var isAvailable = row.isAvailable;
 
                     var updateBtn = `<a href="/Product/Update/${productId}" class="btn btn-warning mx-2">
@@ -69,7 +69,7 @@ function loadDataTable() {
 
 
         ],
-        "order": [6, 'desc']
+        "order": [[6, 'desc']]
        
     });
     
