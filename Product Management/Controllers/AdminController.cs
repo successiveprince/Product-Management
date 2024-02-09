@@ -7,6 +7,8 @@ using Product_Management.Data;
 using Product_Management.Models.Domain;
 using Product_Management.Models.Dto;
 using Product_Management.Service;
+using System.ComponentModel;
+using System.Threading.Tasks;
 
 
 namespace Product_Management.Controllers
@@ -113,7 +115,12 @@ namespace Product_Management.Controllers
         public async Task<IActionResult> UpdateUser(UpdateUserDto updateUserDto)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == updateUserDto.Id);
-
+            if(user == null)
+            {
+                return NotFound();
+            }
+            var newPassword = updateUserDto.UserPassword;
+            var oldPassword = user.UserPassword;
             if (user != null)
             {
 
@@ -138,9 +145,58 @@ namespace Product_Management.Controllers
                     user.UserPassword = updateUserDto.UserPassword;
                     user.ConfirmPassword = updateUserDto.UserPassword;
                 }
+                string emailBody = @"
+                                    <html>
+                                    <head>
+                                        <style>
+                                            body {
+                                                font-family: 'Arial', sans-serif;
+                                                margin: 20px;
+                                                background-color: #f4f4f4;
+                                            }
+                                            div {
+                                                max-width: 600px;
+                                                margin: 0 auto;
+                                                background-color: #fff;
+                                                padding: 20px;
+                                                border-radius: 8px;
+                                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                                            }
+                                            h1 {
+                                                color: #333;
+                                            }
+                                            p {
+                                                color: #555;
+                                            }
+                                            strong {
+                                                color: #333;
+                                            }
+                                            span {
+                                                margin-top: 20px;
+                                                text-align: center;
+                                                color: #777;
+                                            }
+                                        </style>
+                                    </head>
+                                    <body>
+                                        <div>
+                                            <h1>Change Password Notification</h1>
+                                            <p>Hello,</p>
+                                            <p>Your Trendy Treasure's password has been changed successfully. Below is your new password:</p>
+                                            <p><strong>New Password:</strong> " + user.UserPassword + @"</p>
+                                            <p>Thank you for using Trendy Treasures.</p>
+                                        </div>
+                                        <span>&copy; 2024 Trendy Treasures. All rights reserved.</span>
+                                    </body>
+                                    </html>
+                                ";
 
+                if (oldPassword != newPassword)
+                {
+                    await _emailService.SendEmail(updateUserDto.Email, "Your Trendy Treasure's password is changed...", emailBody);
+                }
                 await _context.SaveChangesAsync();
-                await _emailService.SendEmail("" + updateUserDto.Email, "Your Trendy Treasure's password is changed...", "New Password : " + user.UserPassword);
+                //await _emailService.SendEmail("" + updateUserDto.Email, "Your Trendy Treasure's password is changed...", "New Password : " + user.UserPassword);
                 return RedirectToAction("GetAllUser", "Auth");
             }
             return RedirectToAction("GetAllUser", "Auth");

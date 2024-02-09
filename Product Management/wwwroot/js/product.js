@@ -6,7 +6,10 @@ $(document).ready(function () {
 
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
+        "lengthMenu": [[100, 200, 300, -1], ["100", "200", "300", "All"]],
+        "pageLength": 100,
         "ajax": {
+
             url: '/admin/getall',
             dataSrc: 'data'
         },
