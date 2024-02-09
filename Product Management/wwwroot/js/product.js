@@ -72,7 +72,9 @@ function loadDataTable() {
 
 
         ],
-        "order": [[6, 'desc']]
+        "order": [[6, 'desc']],
+        "lengthMenu": [100, 200, 300], 
+        "pageLength": 100 
        
     });
     
