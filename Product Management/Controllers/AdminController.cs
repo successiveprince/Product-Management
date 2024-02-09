@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Product_Management.Data;
 using Product_Management.Models.Domain;
 using Product_Management.Models.Dto;
+using Product_Management.Service;
+
 
 namespace Product_Management.Controllers
 
@@ -13,15 +15,17 @@ namespace Product_Management.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
+        private readonly EmailService _emailService;
         private readonly ProductDbContext _context;
         private readonly SignInManager<UserModel> _signInManager;
         private readonly UserManager<UserModel> _userManager;
 
-        public AdminController(ProductDbContext context , SignInManager<UserModel> signInManager , UserManager<UserModel> userManager)
+        public AdminController(ProductDbContext context , SignInManager<UserModel> signInManager , UserManager<UserModel> userManager , EmailService emailService)
         {
             _context = context;
             _signInManager = signInManager;
             _userManager = userManager;
+            _emailService = emailService;
         }
        
         [HttpGet]
@@ -134,7 +138,9 @@ namespace Product_Management.Controllers
                     user.UserPassword = updateUserDto.UserPassword;
                     user.ConfirmPassword = updateUserDto.UserPassword;
                 }
+
                 await _context.SaveChangesAsync();
+                await _emailService.SendEmail("" + updateUserDto.Email, "Your Trendy Treasure's password is changed...", "New Password : " + user.UserPassword);
                 return RedirectToAction("GetAllUser", "Auth");
             }
             return RedirectToAction("GetAllUser", "Auth");

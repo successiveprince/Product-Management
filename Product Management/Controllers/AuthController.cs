@@ -118,7 +118,6 @@ namespace Product_Management.Controllers
                     if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                     {
                         await _userManager.AddToRoleAsync(user, Roles.User.ToString()!);
-                        await _signInManager.SignInAsync(user, isPersistent: false);
                         return RedirectToAction("GetAllUser", "Auth");
                     }
                     await _userManager.AddToRoleAsync(user, Roles.User.ToString()!);

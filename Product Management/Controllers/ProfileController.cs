@@ -23,7 +23,8 @@ namespace Product_Management.Controllers
                     Name = user.Name,
                     Email = user.Email,
                     PhoneNo= user.PhoneNo,
-                    Role = user.Role
+                    Role = user.Role,
+                    ConfirmPassword = user.ConfirmPassword,
                 };
                 return View(profile);
             }
