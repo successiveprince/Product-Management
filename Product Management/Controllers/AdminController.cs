@@ -186,6 +186,7 @@ namespace Product_Management.Controllers
                                             <p><strong>New Password:</strong> " + user.UserPassword + @"</p>
                                             <p>Thank you for using Trendy Treasures.</p>
                                         </div>
+
                                         <span>&copy; 2024 Trendy Treasures. All rights reserved.</span>
                                     </body>
                                     </html>

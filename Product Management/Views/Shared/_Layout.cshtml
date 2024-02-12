@@ -9,7 +9,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Product_Management</title>
+
+    <link rel="icon" href="~/img/iconTitle.png" type="image/x-icon" />
+    <title>@ViewData["Title"] Trendy Treasures</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" asp-append-version="true" />
@@ -79,11 +81,7 @@
                                     <span class="fst-italic fs-5"><b>Hi,</b></span> <span class="fs-5 fw-bold" style="color:white"> @User.Identity!.Name</span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li>
-                                        <a class="dropdown-item" asp-action="Logout" asp-controller="Auth">
-                                            Logout
-                                        </a>
-                                    </li>
+                                   
                                     @if (User.IsInRole("Admin"))
                                     {
                                         <li>
@@ -100,6 +98,11 @@
                                             </a>
                                         </li>
                                     }
+                                    <li>
+                                        <a class="dropdown-item" asp-action="Logout" asp-controller="Auth">
+                                            Logout
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>

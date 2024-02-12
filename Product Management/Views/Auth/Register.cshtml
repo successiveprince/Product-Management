@@ -1,6 +1,8 @@
-﻿
-@model Product_Management.Models.Dto.AddUserDto;
+﻿@using Microsoft.AspNetCore.Identity
+@using Product_Management.Models.Domain
 
+@model Product_Management.Models.Dto.AddUserDto;
+@inject SignInManager<UserModel> signInManager;
 
 <html>
 <head>
@@ -148,7 +150,15 @@
                 <div class="right col">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <form class="sign-up" method="post" asp-action="Register" asp-controller="Auth">
-                        <h4>Don't worry, You are secure here!</h4>
+                        @if(signInManager.IsSignedIn(User))
+                        {
+                            <h4 style="text-align:center;">Create new user</h4>
+                        }
+                        else
+                        {
+                            <h4>Don't worry, You are secure here!</h4>
+                        }
+                   
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" placeholder="Enter your name" asp-for="Name">
