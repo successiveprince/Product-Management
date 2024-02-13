@@ -1,0 +1,441 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Product Management.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Product Management.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\0138af4e-933f-4e8a-a4e3-267066856553_oppoFoldPhone.jpg",
+      "PackagePath": "staticwebassets\\image\\0138af4e-933f-4e8a-a4e3-267066856553_oppoFoldPhone.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\0311f636-1a6f-4113-9c91-5be510160012_tl57-10004_1_.webp",
+      "PackagePath": "staticwebassets\\image\\0311f636-1a6f-4113-9c91-5be510160012_tl57-10004_1_.webp"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\03abcf03-38bd-4eb1-b6f8-de7c54638c17_jeans.jpg",
+      "PackagePath": "staticwebassets\\image\\03abcf03-38bd-4eb1-b6f8-de7c54638c17_jeans.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\0581e789-4fc2-4255-9926-87008df4a463_oppoFold.jpg",
+      "PackagePath": "staticwebassets\\image\\0581e789-4fc2-4255-9926-87008df4a463_oppoFold.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\0c3460c0-69d2-421f-b076-ac02d2aec1d4_lipstick.jpg",
+      "PackagePath": "staticwebassets\\image\\0c3460c0-69d2-421f-b076-ac02d2aec1d4_lipstick.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\0de9648a-032c-4233-aeb0-8186659c5c3a_s22ultra.webp",
+      "PackagePath": "staticwebassets\\image\\0de9648a-032c-4233-aeb0-8186659c5c3a_s22ultra.webp"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\1865a22c-5e18-45aa-ba0b-6341f24768a9_galaxyS21.jpg",
+      "PackagePath": "staticwebassets\\image\\1865a22c-5e18-45aa-ba0b-6341f24768a9_galaxyS21.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\1adfc9ad-f0e6-4d61-a41a-ea9787a92f5e_marvelTshirt.jpg",
+      "PackagePath": "staticwebassets\\image\\1adfc9ad-f0e6-4d61-a41a-ea9787a92f5e_marvelTshirt.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\2a2905c2-24aa-4abf-a0bd-8ab6c4ea1502_whiteTshirt.jpg",
+      "PackagePath": "staticwebassets\\image\\2a2905c2-24aa-4abf-a0bd-8ab6c4ea1502_whiteTshirt.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\3d138ae0-2638-41e5-967e-5d9222405589_jiophone.webp",
+      "PackagePath": "staticwebassets\\image\\3d138ae0-2638-41e5-967e-5d9222405589_jiophone.webp"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\4cc6e166-a3ed-4728-ab30-8aad3a567261_acnoFight.jpg",
+      "PackagePath": "staticwebassets\\image\\4cc6e166-a3ed-4728-ab30-8aad3a567261_acnoFight.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\736e6e97-83bb-458d-aa81-e88a797ad7f2_comb.jpg",
+      "PackagePath": "staticwebassets\\image\\736e6e97-83bb-458d-aa81-e88a797ad7f2_comb.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\7dfa22f6-ca8d-462f-8e41-abe10dd5355b_realmephone5.jpg",
+      "PackagePath": "staticwebassets\\image\\7dfa22f6-ca8d-462f-8e41-abe10dd5355b_realmephone5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\7e2bdb74-e843-4224-b247-37e4efc9e8e8_table.jpg",
+      "PackagePath": "staticwebassets\\image\\7e2bdb74-e843-4224-b247-37e4efc9e8e8_table.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\8aa5e288-d06a-4859-9fdb-9632b2a55d3e_redmi.jpg",
+      "PackagePath": "staticwebassets\\image\\8aa5e288-d06a-4859-9fdb-9632b2a55d3e_redmi.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\8bf3f505-0f1e-42f8-8d4e-1deef56f86ec_samsunUltra.jpg",
+      "PackagePath": "staticwebassets\\image\\8bf3f505-0f1e-42f8-8d4e-1deef56f86ec_samsunUltra.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\980dfaf8-faea-4861-8ced-1ac2133b6c63_nokia.jpg",
+      "PackagePath": "staticwebassets\\image\\980dfaf8-faea-4861-8ced-1ac2133b6c63_nokia.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\9910326d-8287-48ea-ac9d-7c1a113ea01d_samsunUltra.jpg",
+      "PackagePath": "staticwebassets\\image\\9910326d-8287-48ea-ac9d-7c1a113ea01d_samsunUltra.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\a7cd916f-20a9-434d-a3c7-5fd8281ba3bf_oppoFoldPhone.jpg",
+      "PackagePath": "staticwebassets\\image\\a7cd916f-20a9-434d-a3c7-5fd8281ba3bf_oppoFoldPhone.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\a960aa97-3ae3-437c-8bd9-b4119e6fd948_watch1.jpg",
+      "PackagePath": "staticwebassets\\image\\a960aa97-3ae3-437c-8bd9-b4119e6fd948_watch1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\adc6c4aa-0b0f-41fa-80ee-55ee6cdbc612_galaxyS21.jpg",
+      "PackagePath": "staticwebassets\\image\\adc6c4aa-0b0f-41fa-80ee-55ee6cdbc612_galaxyS21.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\aef3b012-3fef-43c6-aa85-e78acbd2aa2f_jiophone.jpg",
+      "PackagePath": "staticwebassets\\image\\aef3b012-3fef-43c6-aa85-e78acbd2aa2f_jiophone.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\b5529251-14bf-4508-95a1-9aa8c4714bf1_whiteTshirt.jpg",
+      "PackagePath": "staticwebassets\\image\\b5529251-14bf-4508-95a1-9aa8c4714bf1_whiteTshirt.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\b6488e59-657d-40c5-8734-cc34736dfe45_tableLamp.jpg",
+      "PackagePath": "staticwebassets\\image\\b6488e59-657d-40c5-8734-cc34736dfe45_tableLamp.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\cb0678a0-081a-4cf3-a1ef-de3b5a602482_whiteTshirt.webp",
+      "PackagePath": "staticwebassets\\image\\cb0678a0-081a-4cf3-a1ef-de3b5a602482_whiteTshirt.webp"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\d74c72be-e1c8-46f6-9917-ce0cb6ab101a_watch1.jpg",
+      "PackagePath": "staticwebassets\\image\\d74c72be-e1c8-46f6-9917-ce0cb6ab101a_watch1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\db60fccc-5069-413b-a915-0e44a3255d9a_saree.jpg",
+      "PackagePath": "staticwebassets\\image\\db60fccc-5069-413b-a915-0e44a3255d9a_saree.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\dbe5fe4f-dd02-41ef-acaa-3b47255f9710_oppoFoldPhone.jpg",
+      "PackagePath": "staticwebassets\\image\\dbe5fe4f-dd02-41ef-acaa-3b47255f9710_oppoFoldPhone.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\dc383b45-7858-4d3a-92c4-22c121897cc1_jacket.jpg",
+      "PackagePath": "staticwebassets\\image\\dc383b45-7858-4d3a-92c4-22c121897cc1_jacket.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\dd79d019-66d8-42b6-9290-2851eee895bd_smartWatch.jpg",
+      "PackagePath": "staticwebassets\\image\\dd79d019-66d8-42b6-9290-2851eee895bd_smartWatch.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\e14420d1-9886-47bc-be9b-048e6855617c_ideapadS340.jpg",
+      "PackagePath": "staticwebassets\\image\\e14420d1-9886-47bc-be9b-048e6855617c_ideapadS340.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\e48357a1-1539-4b11-8629-bce5006a252e_tl57-10004_1_.webp",
+      "PackagePath": "staticwebassets\\image\\e48357a1-1539-4b11-8629-bce5006a252e_tl57-10004_1_.webp"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\e99870d2-545d-4bda-8b15-36f898e4a05f_jiophone.webp",
+      "PackagePath": "staticwebassets\\image\\e99870d2-545d-4bda-8b15-36f898e4a05f_jiophone.webp"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\ec4fa603-f838-4baa-9260-0f522e8a17de_lamp.jpg",
+      "PackagePath": "staticwebassets\\image\\ec4fa603-f838-4baa-9260-0f522e8a17de_lamp.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\f29f8489-3059-4ae4-b32f-a66052018c4b_garnierFashWash.webp",
+      "PackagePath": "staticwebassets\\image\\f29f8489-3059-4ae4-b32f-a66052018c4b_garnierFashWash.webp"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\f5836572-10d7-4d97-8343-2e1700f31b7f_jiophone.webp",
+      "PackagePath": "staticwebassets\\image\\f5836572-10d7-4d97-8343-2e1700f31b7f_jiophone.webp"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\f58e920b-6906-45e2-9caa-893926e5a81a_macbook.jpg",
+      "PackagePath": "staticwebassets\\image\\f58e920b-6906-45e2-9caa-893926e5a81a_macbook.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\f5e1da7f-f541-4d8d-b552-af60576ee2d5_realme.jpg",
+      "PackagePath": "staticwebassets\\image\\f5e1da7f-f541-4d8d-b552-af60576ee2d5_realme.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\image\\ff1dedb2-c1ae-4063-a459-8b1f01b7c0db_samsunUltra.jpg",
+      "PackagePath": "staticwebassets\\image\\ff1dedb2-c1ae-4063-a459-8b1f01b7c0db_samsunUltra.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\img\\iconTitle.png",
+      "PackagePath": "staticwebassets\\img\\iconTitle.png"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\img\\logo.png",
+      "PackagePath": "staticwebassets\\img\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\img\\profile.jpg",
+      "PackagePath": "staticwebassets\\img\\profile.jpg"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\img\\titleIcon.png",
+      "PackagePath": "staticwebassets\\img\\titleIcon.png"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\js\\product.js",
+      "PackagePath": "staticwebassets\\js\\product.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\prince.kumar\\Documents\\Project\\Product Management\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Product Management.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Product Management.props",
+      "PackagePath": "build\\Product Management.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Product Management.props",
+      "PackagePath": "buildMultiTargeting\\Product Management.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Product Management.props",
+      "PackagePath": "buildTransitive\\Product Management.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
