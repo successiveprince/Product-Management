@@ -33,9 +33,9 @@
 
         #searchInputContainer {
             position: fixed;
-            top: 9%;
+            top: 10%;
             /* left: 20%; */
-            width: 51.3%;
+            width: 57.65%;
             z-index: 1000; 
             background-color: #fff;
             padding: 10px; 
@@ -349,7 +349,11 @@
             applySearch();
             var collectionsSection = document.getElementById('collections');
             if (collectionsSection) {
-                collectionsSection.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+                // var offset = 100;
+                // collectionsSection.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest', offsetTop: offset });
+                var offset = 150; 
+                var targetOffsetTop = collectionsSection.offsetTop - offset;
+                window.scroll({ top: targetOffsetTop, behavior: 'smooth' });
             }
         }
         function applySearch() {
@@ -373,7 +377,10 @@
         searchInput.addEventListener('input', applyFilters);
         var collectionsSection = document.getElementById('collections');
         if (collectionsSection) {
-            collectionsSection.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+            // collectionsSection.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+            var offset = 150;
+            var targetOffsetTop = collectionsSection.offsetTop - offset;
+            window.scroll({ top: targetOffsetTop, behavior: 'smooth' });
         }
     </script>
    
